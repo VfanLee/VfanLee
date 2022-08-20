@@ -1,3 +1,3 @@
-### 👋 Hi there, I’m Li YuanFan ~ 😗
+### 👋 Hi there, I’m Vfan Lee ~ 😗
 
-[![Double-Fan's GitHub stats](https://github-readme-stats.vercel.app/api?username=Double-Fan&show_icons=true)](double-fan.github.io)
+[![VfanLee's GitHub stats](https://github-readme-stats.vercel.app/api?username=VfanLee&show_icons=true)](VfanLee.github.io)
