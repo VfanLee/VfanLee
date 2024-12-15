@@ -1,0 +1,18 @@
+@use 'mixins/mixins';
+
+// 版心
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// 单行溢出
+.ellipsis {
+  @include mixins.utils-ellipsis;
+}
+
+// pointer 光标
+.cursor-pointer {
+  cursor: pointer;
+}

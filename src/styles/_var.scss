@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use './common/var' as *;
+
+:root {
+  --primary-color: #{map.get(map.get($colors, 'primary'), 'base')};
+
+  --text-color-primary: #{map.get($text-color, 'primary')};
+  --text-color-regular: #{map.get($text-color, 'regular')};
+  --text-color-secondary: #{map.get($text-color, 'secondary')};
+  --text-color-placeholder: #{map.get($text-color, 'placeholder')};
+  --text-color-disabled: #{map.get($text-color, 'disabled')};
+
+  --bg-color: #{map.get($bg-color, '')};
+  --bg-color-page: #{map.get($bg-color, 'page')};
+  --bg-color-overlay: #{map.get($bg-color, 'overlay')};
+
+  --border-color: #{map.get($border-color, '')};
+  --border-color-light: #{map.get($border-color, 'light')};
+  --border-color-lighter: #{map.get($border-color, 'lighter')};
+  --border-color-extra-light: #{map.get($border-color, 'extra-light')};
+  --border-color-dark: #{map.get($border-color, 'dark')};
+  --border-color-darker: #{map.get($border-color, 'darker')};
+}
