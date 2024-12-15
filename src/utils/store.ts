@@ -1,28 +1,30 @@
 class WebStorage {
-  constructor(type) {
+  constructor(type: 'localStorage' | 'sessionStorage') {
     this.storage = type === 'localStorage' ? window.localStorage : window.sessionStorage
   }
 
+  private storage: Storage
+
   /**
    * 设置存储
-   * @param {string} key - 存储的键
-   * @param {any} value - 存储的值
+   * @param key - 存储的键
+   * @param value - 存储的值
    */
-  set(key, value) {
+  set(key: string, value: any) {
     const stringValue = JSON.stringify(value)
     this.storage.setItem(key, stringValue)
   }
 
   /**
    * 获取存储
-   * @param {string} key - 存储的键
-   * @returns {any|null} - 获取的值
+   * @param key - 存储的键
+   * @returns 获取的值
    */
-  get(key) {
+  get<T>(key: string): T | null {
     const value = this.storage.getItem(key)
     if (value !== null) {
       try {
-        return JSON.parse(value)
+        return JSON.parse(value) as T
       } catch (error) {
         console.warn(`[WebStorage] Failed to parse value for key "${key}".`)
       }
@@ -32,9 +34,9 @@ class WebStorage {
 
   /**
    * 删除指定键
-   * @param {string} key - 存储的键
+   * @param key - 存储的键
    */
-  remove(key) {
+  remove(key: string) {
     this.storage.removeItem(key)
   }
 
@@ -47,10 +49,10 @@ class WebStorage {
 
   /**
    * 检查是否存在某个键
-   * @param {string} key - 存储的键
-   * @returns {boolean} - 是否存在
+   * @param key - 存储的键
+   * @returns 是否存在
    */
-  has(key) {
+  has(key: string): boolean {
     return this.storage.getItem(key) !== null
   }
 }

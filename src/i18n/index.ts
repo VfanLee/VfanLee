@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import cookie from '@/utils/cookie'
-import zh from './locales/zh'
-import en from './locales/en'
+import zh from './locales/zh.json'
+import en from './locales/en.json'
 
 const messages = {
   zh,

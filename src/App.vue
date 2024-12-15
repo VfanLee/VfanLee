@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useLocaleStore } from '@/stores/locale'
 
 const localeStore = useLocaleStore()

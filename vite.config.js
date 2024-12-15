@@ -58,14 +58,5 @@ export default defineConfig({
     sourcemap: false,
     emptyOutDir: true,
     chunkSizeWarningLimit: Infinity,
-    rollupOptions: {
-      output: {
-        manualChunks: id => {
-          if (id.includes('node_modules/element-plus')) {
-            return 'element-plus'
-          }
-        },
-      },
-    },
   },
 })

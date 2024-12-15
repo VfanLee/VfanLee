@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import VfHeader from './VfHeader/index.vue'
 import VfFooter from './VfFooter/index.vue'
 import VfMain from './VfMain/index.vue'

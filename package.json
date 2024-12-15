@@ -1,12 +1,14 @@
 {
-  "name": "vue-pc-template",
+  "name": "vfanlee",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force"
   },
   "author": {
     "name": "Vfan Lee",
@@ -29,12 +31,19 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "18",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "npm-run-all2": "^7.0.1",
     "sass": "^1.81.0",
+    "typescript": "^5.7.2",
     "unplugin-auto-import": "^0.18.6",
     "unplugin-vue-components": "^0.27.5",
     "vite": "^5.4.11",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vite-plugin-vue-devtools": "^7.6.7"
+    "vite-plugin-vue-devtools": "^7.6.7",
+    "vue-tsc": "^2.1.10"
   }
 }

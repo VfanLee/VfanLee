@@ -10,7 +10,7 @@ export const useLocaleStore = defineStore('locale', {
     dir: state => (state === 'ar' ? 'rtl' : 'ltr'),
   },
   actions: {
-    setLocale(locale) {
+    setLocale(locale: string) {
       this.locale = locale
 
       i18n.global.locale.value = locale
