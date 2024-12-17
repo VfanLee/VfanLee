@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import config from '@/config'
 import { useRouter } from 'vue-router'
 
@@ -18,12 +18,12 @@ const openCodeUrl = () => {
     <div class="container">
       <div class="logo">🦄</div>
       <h2 class="title">{{ config.title }}</h2>
-      <p class="detail">{{ $t('homeView.detail') }}</p>
+      <p class="detail">一名 Web 开发者</p>
       <div class="btn-wrap">
-        <button type="button" class="btn btn-primary" @click="goAboutPage">{{ $t('about') }}</button>
+        <button type="button" class="btn btn-primary" @click="goAboutPage">关于我</button>
         <button type="button" class="btn btn-black" @click="openCodeUrl">
           <SvgIcon name="github" />
-          {{ $t('homeView.code') }}
+          源码
         </button>
       </div>
     </div>

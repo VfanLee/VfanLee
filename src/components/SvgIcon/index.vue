@@ -1,10 +1,7 @@
-<script setup>
-const props = defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-})
+<script setup lang="ts">
+import type { SvgIconProps } from './types'
+
+const props = defineProps<SvgIconProps>()
 </script>
 
 <template>

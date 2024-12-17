@@ -1,22 +1,14 @@
-<script setup>
+<script setup lang="ts">
+import type { LogoProps } from './types'
+
 defineOptions({
   name: 'Logo',
 })
 
-const props = defineProps({
-  title: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
-  external: {
-    type: Boolean,
-  },
-})
+const props = defineProps<LogoProps>()
 
 const is = computed(() => {
-  return props.link ? (props.external ? 'a' : 'router-link') : 'span'
+  return props.link ? (props.external ? 'a' : 'RouterLink') : 'span'
 })
 
 const attr = props.link ? (props.external ? { href: props.link } : { to: props.link }) : {}

@@ -8,8 +8,7 @@ defineOptions({
 
 const route = useRoute()
 
-const isHomePage = computed(() => route.name === 'Home')
-console.log(unref(isHomePage))
+const isHomePage = computed<boolean>(() => route.name === 'Home')
 </script>
 
 <template>
@@ -27,10 +26,10 @@ console.log(unref(isHomePage))
       <nav class="nav">
         <ul class="links">
           <li class="link-item">
-            <RouterLink :to="{ path: '/home' }">{{ $t('home') }}</RouterLink>
+            <RouterLink :to="{ path: '/home' }">首页</RouterLink>
           </li>
           <li class="link-item">
-            <RouterLink :to="{ path: '/about' }">{{ $t('about') }}</RouterLink>
+            <RouterLink :to="{ path: '/about' }">关于我</RouterLink>
           </li>
         </ul>
         <ul class="extra-links">
