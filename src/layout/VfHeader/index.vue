@@ -26,10 +26,10 @@ const isHomePage = computed<boolean>(() => route.name === 'Home')
       <nav class="nav">
         <ul class="links">
           <li class="link-item">
-            <RouterLink :to="{ path: '/home' }">首页</RouterLink>
+            <RouterLink :to="{ path: '/home' }">{{ $t('home') }}</RouterLink>
           </li>
           <li class="link-item">
-            <RouterLink :to="{ path: '/about' }">关于我</RouterLink>
+            <RouterLink :to="{ path: '/about' }">{{ $t('about') }}</RouterLink>
           </li>
         </ul>
         <ul class="extra-links">

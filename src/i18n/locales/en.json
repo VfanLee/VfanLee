@@ -1,0 +1,14 @@
+{
+  "home": "Home",
+  "about": "About",
+  "code": "Code",
+  "homePage": {
+    "details": "A Web Developer"
+  },
+  "aboutPage": {
+    "title": "About"
+  },
+  "contactPage": {
+    "title": "Contact"
+  }
+}

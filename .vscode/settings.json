@@ -1,7 +1,7 @@
 {
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.sourceLanguage": "zh",
-  "i18n-ally.displayLanguage": "zh",
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "en",
   "i18n-ally.annotationInPlace": false,
   "i18n-ally.localesPaths": [
     "src/i18n/locales"

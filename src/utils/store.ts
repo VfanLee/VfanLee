@@ -33,6 +33,22 @@ class WebStorage {
   }
 
   /**
+   * 获取所有键值对
+   * @returns 所有存储内容的键值对
+   */
+  getAll(): Record<string, any> {
+    const entries: Record<string, any> = {}
+    for (let i = 0; i < this.storage.length; i++) {
+      const key = this.storage.key(i)
+      if (key) {
+        const value = this.get(key)
+        entries[key] = value
+      }
+    }
+    return entries
+  }
+
+  /**
    * 删除指定键
    * @param key - 存储的键
    */

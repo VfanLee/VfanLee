@@ -28,7 +28,7 @@ const attr = props.link ? (props.external ? { href: props.link } : { to: props.l
   display: inline-flex;
   align-items: center;
   height: 100%;
-  font-size: 20px;
+  font-size: 1rem;
   color: var(--text-color-primary);
 
   > span,

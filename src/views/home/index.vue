@@ -18,12 +18,12 @@ const openCodeUrl = () => {
     <div class="container">
       <div class="logo">🦄</div>
       <h2 class="title">{{ config.title }}</h2>
-      <p class="detail">一名 Web 开发者</p>
+      <p class="details">{{ $t('homePage.details') }}</p>
       <div class="btn-wrap">
-        <button type="button" class="btn btn-primary" @click="goAboutPage">关于我</button>
+        <button type="button" class="btn btn-primary" @click="goAboutPage">{{ $t('about') }}</button>
         <button type="button" class="btn btn-black" @click="openCodeUrl">
           <SvgIcon name="github" />
-          源码
+          {{ $t('code') }}
         </button>
       </div>
     </div>
@@ -56,12 +56,14 @@ const openCodeUrl = () => {
     font-size: 3.5rem;
     color: transparent;
     animation: identifier 10s ease infinite;
+    letter-spacing: 0.125rem;
   }
 
-  .detail {
+  .details {
     margin-bottom: 2rem;
     font-size: 1.5rem;
     line-height: 2rem;
+    letter-spacing: 0.0625rem;
   }
 
   .btn-wrap {
