@@ -48,10 +48,10 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    host: true,
-    port: 5137,
-  },
+  // server: {
+  //   host: true,
+  //   port: 5173,
+  // },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

@@ -1,11 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { marked } from 'marked'
+import content from './content.md?raw'
+
+const parsedContent = ref<string | Promise<string>>(marked.parse(content))
+</script>
 
 <template>
   <div class="about-view">
     <div class="container">
-      <h2 class="title">{{ $t('aboutPage.title') }} Vfan Lee</h2>
-      <p>👋 我是一名 Web 开发者。目前就职于一家在线教育公司，担任一名 Web 前端开发。</p>
-      <p>我目前的重点是使用 Vue.js、Node.js 的包和 CLI 工具进行 Web 网页进行开发。</p>
+      <div class="md-content" v-html="parsedContent"></div>
     </div>
   </div>
 </template>
@@ -17,16 +20,6 @@
 
   .container {
     margin: 4rem auto;
-  }
-
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  p {
-    margin: 1rem 0;
-    line-height: 1.6;
   }
 
   @media (min-width: 1200px) {

@@ -3,10 +3,12 @@
 <template>
   <div class="contact-view">
     <div class="container">
-      <h2 class="title">{{ $t('contactPage.title') }} Vfan Lee</h2>
-      <p>
-        <a class="email" href="mailto:fanfanfafafa@gmail.com">fanfanfafafa@gmail.com</a>
-      </p>
+      <div class="md-content">
+        <h2>{{ $t('contactPage.title') }} Vfan Lee</h2>
+        <p>
+          <a class="email" href="mailto:fanfanfafafa@gmail.com">fanfanfafafa@gmail.com</a>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -18,16 +20,6 @@
 
   .container {
     margin: 4rem auto;
-  }
-
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  p {
-    margin: 1rem 0;
-    line-height: 1.6;
   }
 
   .email {

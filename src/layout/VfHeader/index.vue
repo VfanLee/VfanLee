@@ -66,6 +66,9 @@ const isHomePage = computed<boolean>(() => route.name === 'Home')
 
   .links {
     display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     font-size: 1rem;
 
     .link-item {
@@ -93,18 +96,22 @@ const isHomePage = computed<boolean>(() => route.name === 'Home')
 
   .extra-links {
     display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     font-size: 1.125rem;
 
     .link-item {
-      &:hover {
-        background-color: var(--bg-color-page);
+      > a {
+        &:hover,
+        &:focus {
+          background-color: var(--bg-color-page);
+        }
       }
     }
   }
 
   .link-item {
-    border-radius: 8px;
-
     > a {
       position: relative;
       display: inline-flex;
@@ -113,6 +120,7 @@ const isHomePage = computed<boolean>(() => route.name === 'Home')
       width: 100%;
       height: 100%;
       padding: 0.75rem;
+      border-radius: 8px;
       white-space: nowrap;
       letter-spacing: 0.0625rem;
       cursor: pointer;

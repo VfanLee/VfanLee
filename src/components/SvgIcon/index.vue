@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import type { SvgIconProps } from './types'
 
-const props = defineProps<SvgIconProps>()
+const { size = '1em' } = defineProps<SvgIconProps>()
 </script>
 
 <template>
-  <svg aria-hidden="true">
+  <svg class="svg-icon" :class="[`icon-${name}`]" aria-hidden="true">
     <use :xlink:href="`#icon-${name}`"></use>
   </svg>
 </template>
 
 <style scoped>
 svg {
-  width: 1em;
-  height: 1em;
+  width: v-bind(size);
+  height: v-bind(size);
   fill: currentColor;
 }
 </style>
