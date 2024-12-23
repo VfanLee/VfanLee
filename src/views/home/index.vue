@@ -18,12 +18,12 @@ const openCodeUrl = () => {
     <div class="container">
       <div class="logo">🦄</div>
       <h2 class="title">{{ config.title }}</h2>
-      <p class="details">{{ $t('homePage.details') }}</p>
+      <p class="details">{{ config.subtitle }}</p>
       <div class="btn-wrap">
         <button type="button" class="btn btn-primary" @click="goAboutPage">{{ $t('about') }}</button>
         <button type="button" class="btn btn-black" @click="openCodeUrl">
           <SvgIcon name="github" />
-          {{ $t('code') }}
+          主页
         </button>
       </div>
     </div>

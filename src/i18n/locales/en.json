@@ -2,10 +2,6 @@
   "home": "Home",
   "about": "About",
   "contact": "Contact",
-  "code": "Code",
-  "homePage": {
-    "details": "A Web Developer"
-  },
   "aboutPage": {
     "title": "About"
   },

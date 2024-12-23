@@ -10,7 +10,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<QRCodeProps>(), {
   modelValue: '',
-  // https://github.com/soldair/node-qrcode#qr-code-options
   options: () => ({}),
   logo: '',
 })
