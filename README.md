@@ -23,8 +23,8 @@ Welcome to my profile! I'm Vfan Lee, A web developer from China. Thanks for visi
 
 ### Most Used Languages
 
-<img style="width: 100%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=compact" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=compact" />
 
 ### GitHub Stats
 
-<img style="width: 100%" src="https://github-readme-stats.vercel.app/api?username=VfanLee&show_icons=true&include_all_commits=true&theme=vue" />
+<img src="https://github-readme-stats.vercel.app/api?username=VfanLee&show_icons=true&include_all_commits=true&theme=vue" />
