@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import VfHeader from './VfHeader/index.vue'
+import VfNav from './VfNav/index.vue'
 import VfFooter from './VfFooter/index.vue'
-import VfMain from './VfMain/index.vue'
+import VfContent from './VfContent/index.vue'
 
 defineOptions({
   name: 'VfLayout',
@@ -10,8 +10,8 @@ defineOptions({
 
 <template>
   <div class="vf-layout">
-    <VfHeader />
-    <VfMain />
+    <VfNav />
+    <VfContent />
     <VfFooter />
   </div>
 </template>

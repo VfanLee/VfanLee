@@ -1,12 +1,24 @@
 html {
   font-size: 16px;
 
-  @media (min-width: 768px) {
-    font-size: 18px;
+  .nav-bar-menu {
+    display: none;
   }
 
-  @media (min-width: 992px) {
-    font-size: 20px;
+  .nav-bar-hamburger {
+    display: inline-flex;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+
+    .nav-bar-hamburger {
+      display: none;
+    }
+
+    .nav-screen {
+      display: none;
+    }
   }
 
   @media (min-width: 1200px) {

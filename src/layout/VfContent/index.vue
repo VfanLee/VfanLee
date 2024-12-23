@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'VfMain',
+  name: 'VfContent',
 })
 </script>
 
 <template>
-  <div class="vf-main">
+  <div class="vf-content">
     <RouterView />
   </div>
 </template>

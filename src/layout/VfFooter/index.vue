@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <div class="vf-footer">
+  <footer class="vf-footer">
     <div class="container">
       <p class="remark">无人扶我青云志，我自踏雪至山巅</p>
       <ul class="links">
@@ -18,7 +18,7 @@ defineOptions({
         </li>
       </ul>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style lang="scss" scoped>
@@ -56,7 +56,6 @@ defineOptions({
 
   .link-item {
     > a {
-      position: relative;
       display: inline-flex;
       justify-content: center;
       align-items: center;
