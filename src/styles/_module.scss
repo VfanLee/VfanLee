@@ -1,0 +1,9 @@
+@use 'mixins/mixins';
+
+// 版心
+.container {
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

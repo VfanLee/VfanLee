@@ -1,0 +1,24 @@
+html {
+  font-size: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
+}
+
+.md-content {
+  h2 {
+    font-size: 2.5rem;
+    margin-top: 0;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 2rem;
+    letter-spacing: 0.0625rem;
+  }
+}
