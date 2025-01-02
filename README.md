@@ -1,6 +1,10 @@
 <h1 align="center">嗨，我是 Vfan Lee👋</h1>
 
-欢迎来到我的个人主页！我是一名来自中国的 Web 开发工程师。感谢你的来访，期待与你 [联系](https://vfanlee.pages.dev/#/contact)！
+欢迎来到我的 GitHub 主页！
+
+我是一名来自中国的 Web 开发工程师。
+
+感谢你的来访，期待与你 [联系](https://vfanlee.pages.dev/#/contact)！
 
 ### 主要技能
 
@@ -22,8 +26,8 @@
 
 ### 最常用的语言
 
-![top-langs](https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=normal&locale=cn&show_owner=true)
+![top-langs](https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=normal&locale=cn&hide_title=true&card_width=500&langs_count=10)
 
 ### GitHub 统计数据
 
-![VfanLee's GitHub stats](https://github-readme-stats.vercel.app/api?username=VfanLee&count_private=true&show_icons=true&include_all_commits=true&theme=vue&locale=cn&show_owner=true)
+![VfanLee's GitHub stats](https://github-readme-stats.vercel.app/api?username=VfanLee&count_private=true&show_icons=true&include_all_commits=false&theme=vue&locale=cn&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&hide_title=true&card_width=500)
