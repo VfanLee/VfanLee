@@ -1,0 +1,17 @@
+[
+  {
+    "title": "开源项目",
+    "subTitle": "为开源社区做出自己的贡献 🤩",
+    "items": [
+      { "text": "GitHub Profile", "remark": "GitHub Profile", "preview": "https://github.com/VfanLee", "source": "https://github.com/VfanLee/VfanLee" },
+      { "text": "CV Generator", "remark": "简历生成器", "preview": "https://cv-generator-a6r.pages.dev", "source": "https://github.com/VfanLee/cv-generator" }
+    ]
+  },
+  {
+    "title": "Vfan Series",
+    "subTitle": "个人专属！ 😎",
+    "items": [
+      { "text": "Docs", "remark": "学习笔记", "preview": "https://vfan-docs.pages.dev", "source": "" }
+    ]
+  }
+]

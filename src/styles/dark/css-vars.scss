@@ -1,0 +1,65 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '../common/var.scss' as common;
+@use './var.scss' as *;
+
+html.dark {
+  color-scheme: dark;
+
+  /* Color Definitions */
+  $color-white: map.get(common.$colors, 'white');
+  $color-black: map.get(common.$colors, 'black');
+  --color-white: #{map.get(common.$colors, 'white')};
+  --color-black: #{map.get(common.$colors, 'black')};
+
+  @each $type in common.$types {
+    $base-color: map.get(map.get(common.$colors, $type), 'base');
+    --color-#{$type}: #{$base-color};
+
+    /* Generate Light Colors */
+    @for $i from 1 through 9 {
+      --color-#{$type}-light-#{$i}: #{color.mix($color-black, $base-color, $i * 10%)};
+    }
+
+    /* Generate Dark Colors */
+    @for $i from 1 through 9 {
+      --color-#{$type}-dark-#{$i}: #{color.mix($color-white, $base-color, $i * 10%)};
+    }
+  }
+
+  --text-color-primary: #{map.get($text-color, 'primary')};
+  --text-color-regular: #{map.get($text-color, 'regular')};
+  --text-color-secondary: #{map.get($text-color, 'secondary')};
+  --text-color-placeholder: #{map.get($text-color, 'placeholder')};
+  --text-color-disabled: #{map.get($text-color, 'disabled')};
+
+  --fill-color: #{map.get($fill-color, '')};
+  --fill-color-light: #{map.get($fill-color, 'light')};
+  --fill-color-lighter: #{map.get($fill-color, 'lighter')};
+  --fill-color-extra-light: #{map.get($fill-color, 'extra-light')};
+  --fill-color-dark: #{map.get($fill-color, 'dark')};
+  --fill-color-darker: #{map.get($fill-color, 'darker')};
+  --fill-color-blank: #{map.get($fill-color, 'blank')};
+
+  --bg-color: #{map.get($bg-color, '')};
+  --bg-color-page: #{map.get($bg-color, 'page')};
+  --bg-color-overlay: #{map.get($bg-color, 'overlay')};
+
+  --border-color: #{map.get($border-color, '')};
+  --border-color-light: #{map.get($border-color, 'light')};
+  --border-color-lighter: #{map.get($border-color, 'lighter')};
+  --border-color-extra-light: #{map.get($border-color, 'extra-light')};
+  --border-color-dark: #{map.get($border-color, 'dark')};
+  --border-color-darker: #{map.get($border-color, 'darker')};
+}
+
+html.dark {
+  --vf-nav-bg-color: #121212;
+
+  --btn-black-bg-color: transparent;
+  --btn-black-border-color: var(--text-color-primary);
+  --btn-black-text-color: var(--text-color-primary);
+  --btn-black-bg-color--hover: transparent;
+  --btn-black-border-color--hover: var(--text-color-regular);
+  --btn-black-text-color--hover: var(--text-color-regular);
+}
