@@ -13,8 +13,11 @@ defineProps<{
 
 <template>
   <div class="card">
-    <div class="card-title">{{ text }}</div>
-    <div class="card-remark">{{ remark }}</div>
+    <div class="card-title">
+      <a v-if="preview" :href="preview" target="_blank" ref="noreference" :title="text">{{ text }}</a>
+      <template v-else>{{ text }}</template>
+    </div>
+    <div class="card-remark" :title="remark">{{ remark }}</div>
     <div class="card-operation">
       <a v-if="preview" :href="preview" target="_blank" ref="noreference">预览</a>
       <a v-if="source" :href="source" target="_blank" ref="noreference">源码</a>
@@ -27,14 +30,21 @@ defineProps<{
   border-width: 1px;
   padding: 1rem;
   border-radius: 6px;
-
   overflow: hidden;
 
   .card-title {
+    @include utils-ellipsis;
     font-size: 1.25rem;
     font-weight: bold;
     line-height: 2;
     color: var(--color-primary);
+    a {
+      color: var(--color-primary);
+    }
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.25rem;
+    }
   }
 
   .card-remark {
@@ -54,7 +64,6 @@ defineProps<{
     font-weight: bold;
     line-height: 1.5;
     color: var(--text-color-regular);
-
     a:hover,
     a:active {
       text-decoration: underline;
