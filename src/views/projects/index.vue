@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import data from './data.json'
+import type { Project } from './types'
+
+const projects = data as Project[]
 </script>
 
 <template>
@@ -9,11 +12,19 @@ import data from './data.json'
         <h2>项目</h2>
       </section>
 
-      <section class="project" v-for="(p, i) of data" :key="i">
+      <section class="project" v-for="(p, i) of projects" :key="i">
         <h3 class="project-title">{{ p.title }}</h3>
         <p class="project-subtitle">{{ p.subTitle }}</p>
         <div class="items-grid">
-          <Card v-for="(item, i) of p.items" :key="i" :text="item.text" :remark="item.remark" :preview="item.preview" :source="item.source" />
+          <Card 
+            v-for="(item, i) of p.items" 
+            :key="i" 
+            :text="item.text" 
+            :remark="item.remark" 
+            :preview="item.preview" 
+            :npm="item.npm" 
+            :github="item.github" 
+          />
         </div>
       </section>
     </div>

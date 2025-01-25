@@ -6,21 +6,29 @@ defineOptions({
 defineProps<{
   text: string
   remark: string
-  preview: string
-  source: string
+  npm?: string
+  github?: string
+  preview?: string
 }>()
 </script>
 
 <template>
   <div class="card">
     <div class="card-title">
-      <a v-if="preview" :href="preview" target="_blank" ref="noreference" :title="text">{{ text }}</a>
+      <a v-if="preview || npm || github" :href="preview || npm || github" target="_blank" ref="noreference" :title="text">{{ text }}</a>
       <template v-else>{{ text }}</template>
     </div>
     <div class="card-remark" :title="remark">{{ remark }}</div>
     <div class="card-operation">
-      <a v-if="preview" :href="preview" target="_blank" ref="noreference">预览</a>
-      <a v-if="source" :href="source" target="_blank" ref="noreference">源码</a>
+      <a v-if="preview" :href="preview" target="_blank" ref="noreference">
+        <SvgIcon name="eye" />
+      </a>
+      <a v-if="npm" :href="npm" target="_blank" ref="noreference">
+        <SvgIcon name="npm" />
+      </a>
+      <a v-if="github" :href="github" target="_blank" ref="noreference">
+        <SvgIcon name="github" />
+      </a>
     </div>
   </div>
 </template>
@@ -57,17 +65,22 @@ defineProps<{
 
   .card-operation {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    gap: 0.5rem;
-    margin-block-start: 0.125rem;
-    font-size: 0.825rem;
-    font-weight: bold;
-    line-height: 1.5;
+    gap: 1rem;
+    height: 2rem;
     color: var(--text-color-regular);
-    a:hover,
-    a:active {
-      text-decoration: underline;
-      text-underline-offset: 0.25rem;
+
+    .icon-eye {
+      font-size: 1.25rem;
+    }
+
+    .icon-npm {
+      font-size: 2rem;
+    }
+
+    .icon-github {
+      font-size: 1.25rem;
     }
   }
 }

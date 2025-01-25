@@ -3,22 +3,40 @@
     "title": "开源应用",
     "subTitle": "为开源社区做出自己的贡献 🤩",
     "items": [
-      { "text": "CV Generator", "remark": "简历生成器", "preview": "https://cv-generator-a6r.pages.dev", "source": "https://github.com/VfanLee/cv-generator" }
+      {
+        "text": "CV Generator",
+        "remark": "在线简历生成器",
+        "preview": "https://cv-generator-a6r.pages.dev",
+        "github": "https://github.com/VfanLee/cv-generator"
+      }
     ]
   },
   {
     "title": "开源库",
     "subTitle": "为开源社区做出自己的贡献 🤩",
     "items": [
-      { "text": "Vue Qrcode", "remark": "一个基于 qrcode 的 Vue3 组件", "preview": "https://www.npmjs.com/package/@vfanlee/vue-qrcode", "source": "https://github.com/VfanLee/vue-qrcode" }
+      {
+        "text": "Vue Qrcode",
+        "remark": "生成二维码并支持添加 logo 的 Vue3 组件",
+        "npm": "https://www.npmjs.com/package/@vfanlee/vue-qrcode",
+        "github": "https://github.com/VfanLee/vue-qrcode"
+      }
     ]
   },
   {
     "title": "Vfan Series",
-    "subTitle": "个人专属！ 😎",
+    "subTitle": "Vfan Lee 个人专属系列 😎",
     "items": [
-      { "text": "GitHub Profile", "remark": "Vfan Lee's GitHub Profile", "preview": "https://github.com/VfanLee", "source": "https://github.com/VfanLee/VfanLee" },
-      { "text": "Docs", "remark": "学习笔记", "preview": "https://vfan-docs.pages.dev", "source": "" }
+      {
+        "text": "GitHub Profile",
+        "remark": "Vfan Lee's GitHub Profile",
+        "preview": "https://github.com/VfanLee"
+      },
+      {
+        "text": "Vfan Docs",
+        "remark": "个人学习笔记",
+        "preview": "https://vfan-docs.pages.dev"
+      }
     ]
   }
 ]

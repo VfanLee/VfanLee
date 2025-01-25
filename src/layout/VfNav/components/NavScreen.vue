@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import routes from './routes.json'
+import routes from '../routes.json'
+
+import { onBeforeRouteLeave } from 'vue-router'
+import { useNavStore } from '@/stores/nav'
 
 defineOptions({
   name: 'NavScreen',
 })
+
+const navStore = useNavStore()
 
 const { open = false } = defineProps<{
   open: boolean
@@ -19,13 +24,17 @@ watch(
     }
   },
 )
+
+onBeforeRouteLeave(() => {
+  navStore.closeScreen()
+})
 </script>
 
 <template>
   <div class="nav-screen" v-if="open">
     <ul class="links">
-      <li class="link-item" v-for="(r, i) of routes" :key="i" @click="$router.replace({ path: r.link })">
-        <RouterLink :to="{ path: r.link }">{{ r.text }}</RouterLink>
+      <li class="link-item" v-for="(r, i) of routes" :key="i">
+        <AppLink :to="{ path: r.link }">{{ r.text }}</AppLink>
       </li>
     </ul>
   </div>
@@ -47,39 +56,16 @@ watch(
     list-style: none;
     padding: 0;
 
-    .link-item {
+    .link-item > a {
+      display: flex;
       padding: 1rem 3rem;
       font-size: 1.25rem;
       cursor: pointer;
 
-      &:hover {
-        > a::after {
-          width: 100%;
-          background-color: #c790f1;
-        }
-      }
-
-      > a {
-        position: relative;
-
-        &::after {
-          content: '';
-          position: absolute;
-          inset-block-end: -0.5rem;
-          inset-inline-start: 50%;
-          display: flex;
-          width: 0;
-          height: 0.2rem;
-          border-radius: 0.2rem;
-          transition: 0.2s width ease-in-out;
-          transform: translateX(-50%);
-        }
-
-        &.router-link-active::after {
-          inset-block-end: -0.5rem;
-          width: 100%;
-          background-color: #8d65c5;
-        }
+      &.router-link-exact-active {
+        color: transparent;
+        background-color: #8d65c5;
+        background-clip: text;
       }
     }
   }

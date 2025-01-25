@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { useRoute } from 'vue-router'
 
 export const useNavStore = defineStore('nav', () => {
   const isScreenOpen = ref(false)
@@ -8,27 +7,19 @@ export const useNavStore = defineStore('nav', () => {
     isScreenOpen.value = !isScreenOpen.value
 
     if (window.outerWidth >= 768) {
-      window.addEventListener('resize', closeScreenOnTabletWindow)
+      window.addEventListener('resize', closeScreen)
     } else {
-      window.removeEventListener('resize', closeScreenOnTabletWindow)
+      window.removeEventListener('resize', closeScreen)
     }
   }
 
-  function closeScreenOnTabletWindow() {
+  function closeScreen() {
     isScreenOpen.value = false
   }
-
-  const route = useRoute()
-
-  watch(
-    () => route.path,
-    () => {
-      isScreenOpen.value = false
-    },
-  )
 
   return {
     isScreenOpen,
     toggleScreen,
+    closeScreen,
   }
 })

@@ -13,7 +13,7 @@ defineOptions({
       <ul class="links">
         <li class="link-item">
           <a :href="config.github" target="_blank" rel="noreferrer">
-            <SvgIcon name="github" />
+            <SvgIcon name="github-alt" />
           </a>
         </li>
       </ul>

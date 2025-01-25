@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import routes from './routes.json'
+import routes from '../routes.json'
 
 defineOptions({
   name: 'NavBarMenu',
@@ -10,10 +10,10 @@ defineOptions({
   <nav class="nav-bar-menu">
     <ul class="links">
       <li class="link-item" :class="{ 'is-icon': r.icon }" v-for="(r, i) of routes" :key="i">
-        <RouterLink :to="{ path: r.link }">
+        <AppLink :to="{ path: r.link }">
           <template v-if="r.icon"><SvgIcon :name="r.icon" /></template>
           <template v-else>{{ r.text }}</template>
-        </RouterLink>
+        </AppLink>
       </li>
     </ul>
   </nav>
