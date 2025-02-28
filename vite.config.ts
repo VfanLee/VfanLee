@@ -13,11 +13,11 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     AutoImport({
-      dts: true,
+      dts: './types/auto-imports.d.ts',
       imports: ['vue'],
     }),
     Components({
-      dts: true,
+      dts: './types/components.d.ts',
       dirs: ['src/components'],
       extensions: ['vue'],
       deep: true,

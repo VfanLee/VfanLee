@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RouterLinkProps } from 'vue-router'
-import { isExternalLink } from '@/utils'
+import { isExternalLink } from '@/utils/validation'
 
 const props = defineProps<RouterLinkProps>()
 
