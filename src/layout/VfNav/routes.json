@@ -1,0 +1,5 @@
+[
+  { "text": "项目", "link": "/projects" },
+  { "text": "关于我", "link": "/about" },
+  { "text": "联系我", "icon": "mail", "link": "/contact" }
+]

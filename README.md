@@ -6,27 +6,22 @@
 
 感谢你的来访，期待与你 [联系](https://vfanlee.pages.dev/#/contact)！
 
-### 主要技能
+### 主要技术栈
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=ffffff)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=ffffff)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=ffffff)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff)
-![Vue.js](https://img.shields.io/badge/Vue.js-42b883?logo=vue.js&logoColor=ffffff)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=ffffff)
-![Gulp](https://img.shields.io/badge/Gulp-CF4647?logo=gulp&logoColor=ffffff)
-![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?logo=webpack&logoColor=ffffff)
-![Rollup](https://img.shields.io/badge/Rollup-EC4A3D?logo=rollup.js&logoColor=ffffff)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff)  
+![Vue.js](https://img.shields.io/badge/Vue.js-42b883?logo=vue.js&logoColor=ffffff)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=ffffff)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=ffffff)
+![Rollup](https://img.shields.io/badge/Rollup-EC4A3D?logo=rollup.js&logoColor=ffffff)
+![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?logo=webpack&logoColor=ffffff)
+![Gulp](https://img.shields.io/badge/Gulp-CF4647?logo=gulp&logoColor=ffffff)  
 ![NPM](https://img.shields.io/badge/NPM-CB3837?logo=npm&logoColor=ffffff)
-![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=ffffff)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=ffffff)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=ffffff)
 
-### GitHub 语言统计
+### GitHub 统计
 
-![top-langs](https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=normal&locale=cn&hide_title=true&card_width=500&langs_count=10)
-
-### GitHub 数据统计
-
-![VfanLee's GitHub stats](https://github-readme-stats.vercel.app/api?username=VfanLee&count_private=true&show_icons=true&include_all_commits=false&theme=vue&locale=cn&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&hide_title=true&card_width=500)
+<img height="300" src="https://github-readme-stats.vercel.app/api/top-langs/?username=VfanLee&layout=normal&locale=cn&hide_title=false&custom_title=语言统计&langs_count=10&theme=vue" alt="top-langs" /> <img height="300" src="https://github-readme-stats.vercel.app/api?username=VfanLee&count_private=true&show_icons=true&include_all_commits=false&theme=vue&locale=cn&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&hide_title=false&custom_title=数据统计&card_width=500" alt="github-stats" />
