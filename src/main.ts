@@ -1,7 +1,4 @@
 import 'normalize.css'
-import './styles/var.scss' // 默认主题
-import './styles/dark/css-vars.scss' // 暗黑主题
-import './styles/index.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

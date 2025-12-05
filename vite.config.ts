@@ -11,19 +11,11 @@ export default defineConfig({
   server: {
     open: true,
     host: true,
+    port: 5173,
   },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @use "@/styles/mixins/mixins.scss" as *;
-        `,
-      },
     },
   },
   build: {
@@ -33,20 +25,12 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     AutoImport({
-      dts: './types/auto-imports.d.ts',
+      dts: 'auto-imports.d.ts',
       imports: ['vue'],
     }),
     Components({
-      dts: './types/components.d.ts',
-      dirs: ['src/components'],
-      extensions: ['vue'],
-      deep: true,
-      types: [
-        {
-          from: 'vue-router',
-          names: ['RouterLink', 'RouterView'],
-        },
-      ],
+      dts: 'components.d.ts',
+      dirs: [],
     }),
   ],
 })
