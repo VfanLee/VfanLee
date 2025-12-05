@@ -31,6 +31,7 @@
   "dependencies": {
     "@types/three": "^0.181.0",
     "@vueuse/core": "^12.8.2",
+    "animejs": "^4.2.2",
     "gsap": "^3.13.0",
     "marked": "^15.0.12",
     "normalize.css": "^8.0.1",
@@ -43,6 +44,7 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@tsconfig/node22": "^22.0.5",
+    "@types/animejs": "^3.1.13",
     "@types/node": "^22.19.1",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vitejs/plugin-vue-jsx": "^5.1.2",
