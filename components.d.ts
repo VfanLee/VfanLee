@@ -12,23 +12,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppLink: typeof import('./../src/components/AppLink/index.vue')['default']
-    Card: typeof import('./../src/components/Card/index.vue')['default']
-    Logo: typeof import('./../src/components/Logo/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./../src/components/SvgIcon/index.vue')['default']
-    ThemeSwitcher: typeof import('./../src/components/ThemeSwitcher/index.vue')['default']
   }
 }
 
 // For TSX support
 declare global {
-  const AppLink: typeof import('./../src/components/AppLink/index.vue')['default']
-  const Card: typeof import('./../src/components/Card/index.vue')['default']
-  const Logo: typeof import('./../src/components/Logo/index.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
-  const SvgIcon: typeof import('./../src/components/SvgIcon/index.vue')['default']
-  const ThemeSwitcher: typeof import('./../src/components/ThemeSwitcher/index.vue')['default']
 }
