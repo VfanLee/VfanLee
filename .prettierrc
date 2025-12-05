@@ -1,22 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/prettierrc",
-  "arrowParens": "avoid",
-  "bracketSameLine": false,
-  "bracketSpacing": true,
-  "semi": false,
-  "experimentalTernaries": false,
-  "singleQuote": true,
-  "jsxSingleQuote": false,
-  "quoteProps": "consistent",
-  "trailingComma": "all",
-  "singleAttributePerLine": false,
   "htmlWhitespaceSensitivity": "ignore",
-  "vueIndentScriptAndStyle": false,
-  "proseWrap": "preserve",
-  "insertPragma": false,
   "printWidth": 160,
-  "requirePragma": false,
+  "quoteProps": "consistent",
+  "semi": false,
+  "singleQuote": true,
   "tabWidth": 2,
-  "useTabs": false,
-  "embeddedLanguageFormatting": "auto"
+  "vueIndentScriptAndStyle": true
 }
