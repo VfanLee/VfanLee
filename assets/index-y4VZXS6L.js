@@ -1,0 +1,1 @@
+import{_ as o,c as r,a as n,o as t}from"./index-7eEvZcNC.js";const a={};function s(c,e){return t(),r("div",null,[...e[0]||(e[0]=[n("h1",null,"Vfan Lee",-1),n("h2",null,"Web 开发者 & 开源爱好者",-1)])])}const f=o(a,[["render",s]]);export{f as default};

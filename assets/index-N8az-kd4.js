@@ -1,0 +1,1 @@
+import{_ as f,c as n,a as e,o}from"./index-7eEvZcNC.js";const c={};function l(r,a){return o(),n("div",null,[...a[0]||(a[0]=[e("h2",null,"联系 Vfan Lee",-1),e("a",{class:"email",href:"mailto:fanfanfafafa@gmail.com"},"fanfanfafafa@gmail.com",-1)])])}const t=f(c,[["render",l]]);export{t as default};
