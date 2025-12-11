@@ -11,16 +11,16 @@
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=ffffff)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=ffffff)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=ffffff)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=ffffff)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff)  
 ![Vue.js](https://img.shields.io/badge/Vue.js-42b883?logo=vue.js&logoColor=ffffff)
 ![React](https://img.shields.io/badge/React.js-61DAFB?logo=react&logoColor=ffffff)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=ffffff)  
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=ffffff)
 ![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?logo=webpack&logoColor=ffffff)  
-![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=ffffff)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=ffffff)
 ![NPM](https://img.shields.io/badge/NPM-CB3837?logo=npm&logoColor=ffffff)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=ffffff)
+![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=ffffff)
 
 ### GitHub 统计
 
