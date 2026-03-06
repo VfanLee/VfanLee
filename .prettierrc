@@ -1,10 +1,9 @@
 {
+  "plugins": ["prettier-plugin-tailwindcss"],
   "$schema": "https://json.schemastore.org/prettierrc",
   "htmlWhitespaceSensitivity": "ignore",
-  "printWidth": 160,
+  "printWidth": 120,
   "quoteProps": "consistent",
   "semi": false,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "vueIndentScriptAndStyle": true
+  "singleQuote": true
 }
