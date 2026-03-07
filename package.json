@@ -12,11 +12,10 @@
   },
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [
-      "pnpm lint",
-      "pnpm format"
+      "prettier --write"
     ],
     "src/**/*.{css}": [
-      "pnpm format"
+      "prettier --write"
     ]
   },
   "dependencies": {
