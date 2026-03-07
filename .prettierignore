@@ -7,3 +7,8 @@
 **/*.svg
 **/*.sh
 **/*.d.ts
+
+# shadcn
+src/components/ui/**
+src/lib/utils.ts
+components.json

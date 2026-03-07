@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    // shadcn
+    'src/components/ui/**',
+    'src/lib/utils.ts',
+    'components.json',
+    // others
+    // ...
   ]),
 ])
 
