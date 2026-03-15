@@ -65,22 +65,20 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
           ))}
         </div>
 
-        {limit && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="mt-12 text-center"
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <Link
+            href="/skills"
+            className="text-muted-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[--accent-portfolio]"
           >
-            <Link
-              href="/skills"
-              className="text-muted-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[--accent-portfolio]"
-            >
-              查看所有技能 →
-            </Link>
-          </motion.div>
-        )}
+            查看所有技能 →
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
