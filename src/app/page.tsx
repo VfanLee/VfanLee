@@ -9,8 +9,8 @@ export default function Home() {
     <main>
       <HeroSection />
       <AboutSection />
-      <SkillsSection limit={8} />
-      <ProjectsSection limit={3} />
+      <SkillsSection />
+      <ProjectsSection />
       <ContactSection />
     </main>
   )

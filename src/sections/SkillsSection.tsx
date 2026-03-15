@@ -9,11 +9,13 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ limit }: SkillsSectionProps) {
-  const displayedSkills = limit ? skills.slice(0, limit) : skills
+  const displayedSkills = limit
+    ? skills.slice(0, limit)
+    : skills.filter((skill) => (skill as { showInHome?: boolean }).showInHome)
 
   return (
-    <section id="skills" className="flex min-h-screen flex-col justify-center py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="skills" className="flex min-h-screen w-full flex-col justify-center py-28">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +27,7 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
           <h2 className="text-foreground text-4xl font-bold tracking-tight">专业技能</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {displayedSkills.map((skill, i) => (
             <motion.div
               key={skill.name}
@@ -33,17 +35,16 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -4, borderColor: skill.color }}
-              className="group border-border bg-card rounded-2xl border p-6 transition-all hover:shadow-[0_0_20px_var(--hover-shadow,oklch(0.6_0.18_265/0.15))]"
-              style={{ '--hover-shadow': `${skill.color}33` } as React.CSSProperties}
+              className="group border-border bg-card relative rounded-2xl border p-6 transition-all duration-500 ease-out hover:z-10 hover:-translate-y-1.5 hover:border-(--hover-color) hover:shadow-[0_12px_24px_-8px_var(--hover-shadow,oklch(0.6_0.18_265/0.15))]"
+              style={{ '--hover-shadow': `${skill.color}40`, '--hover-color': skill.color } as React.CSSProperties}
             >
               <div className="mb-4 flex items-center justify-between">
                 <span
-                  className="h-8 w-8 fill-current opacity-90 transition-opacity group-hover:opacity-100"
+                  className="h-8 w-8 fill-current opacity-80 transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100"
                   style={{ color: skill.color }}
                   dangerouslySetInnerHTML={{ __html: skill.icon }}
                 />
-                <span className="bg-secondary text-muted-foreground rounded-full px-2 py-0.5 text-xs">
+                <span className="bg-secondary text-muted-foreground rounded-full px-2 py-0.5 text-xs whitespace-nowrap">
                   {skill.category}
                 </span>
               </div>

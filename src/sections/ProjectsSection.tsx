@@ -3,7 +3,6 @@
 import { projects } from '@/data'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
-import Link from 'next/link'
 
 interface ProjectsSectionProps {
   limit?: number
@@ -13,8 +12,8 @@ export function ProjectsSection({ limit }: ProjectsSectionProps) {
   const displayedProjects = limit ? projects.slice(0, limit) : projects
 
   return (
-    <section id="projects" className="flex min-h-screen flex-col justify-center py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="flex min-h-screen w-full flex-col justify-center py-28">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,8 +33,7 @@ export function ProjectsSection({ limit }: ProjectsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              whileHover={{ y: -6 }}
-              className="group border-border bg-card flex flex-col rounded-2xl border p-6 transition-all hover:border-[--accent-portfolio]/40 hover:shadow-[0_0_30px_oklch(0.6_0.18_265/0.12)]"
+              className="group border-border bg-card relative flex flex-col rounded-2xl border p-6 transition-all duration-500 ease-out hover:z-10 hover:-translate-y-1.5 hover:border-[--accent-portfolio]/40 hover:shadow-[0_12px_24px_-8px_oklch(0.6_0.18_265/0.12)]"
             >
               {/* Gradient accent bar */}
               <div className={`mb-5 h-1 w-full rounded-full bg-linear-to-r ${project.gradient} opacity-70`} />
@@ -91,23 +89,14 @@ export function ProjectsSection({ limit }: ProjectsSectionProps) {
           transition={{ delay: 0.4 }}
           className="mt-12 text-center"
         >
-          {limit ? (
-            <Link
-              href="/projects"
-              className="text-muted-foreground inline-flex items-center gap-2 text-sm transition-colors hover:text-[--accent-portfolio]"
-            >
-              查看所有项目 →
-            </Link>
-          ) : (
-            <a
-              href="https://github.com/VfanLee"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground inline-flex items-center gap-2 text-sm transition-colors hover:text-[--accent-portfolio]"
-            >
-              <Github className="h-4 w-4" />在 GitHub 上查看更多 →
-            </a>
-          )}
+          <a
+            href="https://github.com/VfanLee"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground inline-flex items-center gap-2 text-sm transition-colors hover:text-[--accent-portfolio]"
+          >
+            <Github className="h-4 w-4" />在 GitHub 上查看更多 →
+          </a>
         </motion.div>
       </div>
     </section>

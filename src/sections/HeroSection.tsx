@@ -15,7 +15,7 @@ export function HeroSection() {
   useEffect(() => {
     if (!typedRef.current) return
     const typed = new Typed(typedRef.current, {
-      strings: ['Web 开发工程师', '前端工程师', '开源热爱者'],
+      strings: ['Web 开发工程师', '开源热爱者'],
       typeSpeed: 60,
       backSpeed: 40,
       backDelay: 1800,
@@ -79,7 +79,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-muted-foreground mx-auto mb-24 max-w-xl text-base"
+          className="text-muted-foreground mx-auto max-w-xl text-base"
         >
           我使用现代技术栈打造快速、无障碍视觉体验出色的 Web 应用，兼具极致的细节把控。
         </motion.p>
@@ -103,27 +103,31 @@ export function HeroSection() {
             联系我
           </button>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-18 left-1/2 -translate-x-1/2"
-        >
-          <div className="border-border flex h-10 w-6 items-start justify-center rounded-full border p-1">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{
-                duration: 1.4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="bg-muted-foreground h-2 w-1 rounded-full"
-            />
-          </div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 sm:bottom-12"
+      >
+        <button
+          onClick={() => handleScrollTo('#about')}
+          className="group border-border/80 bg-background/30 flex h-[46px] w-[28px] cursor-pointer items-start justify-center rounded-full border p-1 backdrop-blur-sm transition-colors hover:border-[--accent-portfolio]/50"
+          aria-label="Scroll down"
+        >
+          <motion.div
+            animate={{ y: [0, 16, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="bg-muted-foreground/80 h-[6px] w-[4px] rounded-full transition-colors group-hover:bg-[--accent-portfolio]"
+          />
+        </button>
+      </motion.div>
     </section>
   )
 }
