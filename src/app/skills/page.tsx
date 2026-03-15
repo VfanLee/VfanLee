@@ -21,7 +21,7 @@ export default function SkillsPage() {
   return (
     <main className="min-h-screen pt-24 pb-16">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center md:text-left">
-        <h1 className="text-foreground mb-4 text-4xl font-bold tracking-tight sm:text-5xl">技能栈</h1>
+        <h1 className="text-foreground mb-4 text-4xl font-bold tracking-tight sm:text-5xl">专业技能</h1>
         <p className="text-muted-foreground text-lg">系统化、全面地展示我所熟练掌握的技术能力。</p>
       </div>
 
