@@ -10,8 +10,9 @@ export default function SkillsPage() {
     '基础',
     'UI 框架',
     '应用级框架',
-    '跨端框架',
+    '移动端',
     '后端框架',
+    '数据库',
     '工程化',
     '开发规范',
     '部署',
@@ -46,13 +47,11 @@ export default function SkillsPage() {
                       { '--hover-shadow': `${skill.color}40`, '--hover-color': skill.color } as React.CSSProperties
                     }
                   >
-                    <div className="mb-3 flex justify-center">
-                      <span
-                        className="h-10 w-10 fill-current opacity-80 transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100"
-                        style={{ color: skill.color }}
-                        dangerouslySetInnerHTML={{ __html: skill.icon }}
-                      />
-                    </div>
+                    <span
+                      className="mb-3 block h-10 w-10 fill-current opacity-80 transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100"
+                      style={{ color: skill.color }}
+                      dangerouslySetInnerHTML={{ __html: skill.icon }}
+                    />
                     <h3 className="text-foreground text-center text-sm font-medium">{skill.name}</h3>
                   </div>
                 ))}

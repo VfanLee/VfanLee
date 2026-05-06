@@ -23,7 +23,9 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <p className="mb-2 text-sm font-medium tracking-widest text-[--accent-portfolio] uppercase">我的技术栈</p>
+          <p className="mb-2 text-sm font-medium tracking-widest text-[var(--accent-portfolio)] uppercase">
+            我的技术栈
+          </p>
           <h2 className="text-foreground text-4xl font-bold tracking-tight">专业技能</h2>
         </motion.div>
 
@@ -53,7 +55,8 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
               {/* Progress bar */}
               <div className="bg-secondary h-1.5 w-full overflow-hidden rounded-full">
                 <motion.div
-                  className="h-full rounded-full bg-[--accent-portfolio]"
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: skill.color } as React.CSSProperties}
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   viewport={{ once: true }}
@@ -74,7 +77,7 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
         >
           <Link
             href="/skills"
-            className="text-muted-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[--accent-portfolio]"
+            className="text-muted-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[var(--accent-portfolio)]"
           >
             查看所有技能 →
           </Link>
