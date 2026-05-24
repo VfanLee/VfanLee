@@ -21,7 +21,6 @@ export function ProjectsSection({ limit }: ProjectsSectionProps) {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <p className="mb-2 text-sm font-medium tracking-widest text-[--accent-portfolio] uppercase">我的精选作品</p>
           <h2 className="text-foreground text-4xl font-bold tracking-tight">项目展示</h2>
         </motion.div>
 
@@ -95,7 +94,8 @@ export function ProjectsSection({ limit }: ProjectsSectionProps) {
             rel="noopener noreferrer"
             className="text-muted-foreground inline-flex items-center gap-2 text-sm transition-colors hover:text-[--accent-portfolio]"
           >
-            <Github className="h-4 w-4" />在 GitHub 上查看更多 →
+            <Github className="h-4 w-4" />
+            我的 GitHub →
           </a>
         </motion.div>
       </div>

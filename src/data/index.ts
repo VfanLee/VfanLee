@@ -37,7 +37,7 @@ export const skills = [
   // 基础
   {
     name: 'HTML5',
-    level: 95,
+    level: 90,
     icon: siHtml5.svg,
     color: `#${siHtml5.hex}`,
     category: '基础',
@@ -45,7 +45,7 @@ export const skills = [
   },
   {
     name: 'CSS3',
-    level: 95,
+    level: 90,
     icon: siCss.svg,
     color: `#${siCss.hex}`,
     category: '基础',
@@ -53,7 +53,7 @@ export const skills = [
   },
   {
     name: 'JavaScript',
-    level: 92,
+    level: 90,
     icon: siJavascript.svg,
     color: `#${siJavascript.hex}`,
     category: '基础',
@@ -61,7 +61,7 @@ export const skills = [
   },
   {
     name: 'TypeScript',
-    level: 88,
+    level: 90,
     icon: siTypescript.svg,
     color: `#${siTypescript.hex}`,
     category: '基础',
@@ -95,7 +95,7 @@ export const skills = [
   },
   {
     name: 'Next.js',
-    level: 87,
+    level: 90,
     icon: siNextdotjs.svg,
     color: `#${siNextdotjs.hex}`,
     category: '应用级框架',
@@ -103,7 +103,7 @@ export const skills = [
   },
   {
     name: 'Vue.js',
-    level: 85,
+    level: 90,
     icon: siVuedotjs.svg,
     color: `#${siVuedotjs.hex}`,
     category: '应用级框架',
@@ -121,28 +121,28 @@ export const skills = [
   },
   {
     name: 'H5',
-    level: 70,
+    level: 90,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>H5</title><path d="M16 2H8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm-4 18.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5ZM18 16H6V6h12v10Z"/><path d="M8.3 8.2h1.2v1.6h1.4V8.2h1.2v5H10.9v-2H9.5v2H8.3v-5Zm6.9 0h-2v1.2h2c.7 0 1.3.6 1.3 1.3v1c0 .7-.6 1.3-1.3 1.3H12v-1.2h3.2v-1.2H13c-.7 0-1.3-.6-1.3-1.3v-1C11.7 8.8 12.3 8.2 13 8.2h2.2v1.2Z"/></svg>',
     color: '#64748b',
     category: '移动端',
   },
   {
     name: 'UniApp',
-    level: 70,
+    level: 80,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>UniApp</title><path d="M8 2h8a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H8Zm2 5h4v2h-4V9Zm0 4h4v2h-4v-2Z"/></svg>',
     color: '#22c55e',
     category: '移动端',
   },
   {
     name: 'Taro',
-    level: 65,
+    level: 80,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Taro</title><path d="M8 2h8a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H8Zm2.5 4h3l-1.2 2h1.2l-2.5 6 1.1-4h-1.1l1.5-4Z"/></svg>',
     color: '#f97316',
     category: '移动端',
   },
   {
     name: 'React Native',
-    level: 70,
+    level: 60,
     icon: siReact.svg,
     color: `#${siReact.hex}`,
     category: '移动端',
@@ -158,7 +158,7 @@ export const skills = [
   },
   {
     name: 'Hono',
-    level: 70,
+    level: 60,
     icon: siHono.svg,
     color: `#${siHono.hex}`,
     category: '后端框架',
@@ -167,35 +167,35 @@ export const skills = [
   // 数据库
   {
     name: 'MySQL',
-    level: 70,
+    level: 90,
     icon: siMysql.svg,
     color: `#${siMysql.hex}`,
     category: '数据库',
   },
   {
     name: 'SQLite',
-    level: 65,
+    level: 90,
     icon: siSqlite.svg,
     color: `#${siSqlite.hex}`,
     category: '数据库',
   },
   {
     name: 'PostgreSQL',
-    level: 75,
+    level: 80,
     icon: siPostgresql.svg,
     color: `#${siPostgresql.hex}`,
     category: '数据库',
   },
   {
     name: 'Redis',
-    level: 70,
+    level: 90,
     icon: siRedis.svg,
     color: `#${siRedis.hex}`,
     category: '数据库',
   },
   {
     name: 'MongoDB',
-    level: 65,
+    level: 90,
     icon: siMongodb.svg,
     color: `#${siMongodb.hex}`,
     category: '数据库',
@@ -204,31 +204,37 @@ export const skills = [
   // 工程化
   {
     name: 'Webpack',
-    level: 80,
+    level: 90,
     icon: siWebpack.svg,
     color: `#${siWebpack.hex}`,
     category: '工程化',
   },
   {
     name: 'Vite',
-    level: 80,
+    level: 90,
     icon: siVite.svg,
     color: `#${siVite.hex}`,
     category: '工程化',
   },
 
   // 开发规范
-  { name: 'ESLint', level: 85, icon: siEslint.svg, color: `#${siEslint.hex}`, category: '开发规范' },
+  {
+    name: 'ESLint',
+    level: 90,
+    icon: siEslint.svg,
+    color: `#${siEslint.hex}`,
+    category: '开发规范',
+  },
   {
     name: 'Prettier',
-    level: 85,
+    level: 90,
     icon: siPrettier.svg,
     color: `#${siPrettier.hex}`,
     category: '开发规范',
   },
   {
     name: 'Commitlint',
-    level: 80,
+    level: 90,
     icon: siCommitlint.svg,
     color: `#${siCommitlint.hex}`,
     category: '开发规范',
@@ -237,28 +243,28 @@ export const skills = [
   // 部署
   {
     name: 'PM2',
-    level: 80,
+    level: 90,
     icon: siPm2.svg,
     color: `#${siPm2.hex}`,
     category: '部署',
   },
   {
     name: 'Nginx',
-    level: 70,
+    level: 90,
     icon: siNginx.svg,
     color: `#${siNginx.hex}`,
     category: '部署',
   },
   {
     name: 'Docker',
-    level: 75,
+    level: 90,
     icon: siDocker.svg,
     color: `#${siDocker.hex}`,
     category: '部署',
   },
   {
     name: 'Jenkins',
-    level: 70,
+    level: 90,
     icon: siJenkins.svg,
     color: `#${siJenkins.hex}`,
     category: '部署',
@@ -267,7 +273,7 @@ export const skills = [
   // 持续学习，持续进步
   {
     name: 'Git',
-    level: 88,
+    level: 90,
     icon: siGit.svg,
     color: `#${siGit.hex}`,
     category: '持续学习，持续进步',
@@ -275,7 +281,7 @@ export const skills = [
   },
   {
     name: 'GitHub',
-    level: 90,
+    level: 95,
     icon: siGithub.svg,
     color: `#${siGithub.hex}`,
     category: '持续学习，持续进步',
@@ -283,21 +289,21 @@ export const skills = [
   },
   {
     name: 'npm',
-    level: 85,
+    level: 90,
     icon: siNpm.svg,
     color: `#${siNpm.hex}`,
     category: '持续学习，持续进步',
   },
   {
     name: 'Cloudflare',
-    level: 75,
+    level: 80,
     icon: siCloudflare.svg,
     color: `#${siCloudflare.hex}`,
     category: '持续学习，持续进步',
   },
   {
     name: 'Prisma',
-    level: 75,
+    level: 90,
     icon: siPrisma.svg,
     color: `#${siPrisma.hex}`,
     category: '持续学习，持续进步',

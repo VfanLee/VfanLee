@@ -61,7 +61,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="text-foreground mb-4 text-5xl font-bold tracking-tight sm:text-7xl"
+          className="text-foreground text-5xl font-bold tracking-tight sm:text-7xl"
         >
           I&apos;m <span className="text-[--accent-portfolio]">Vfan Lee</span>
         </motion.h1>
@@ -70,25 +70,16 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-muted-foreground mb-8 text-xl sm:text-2xl"
+          className="text-muted-foreground my-8 text-xl sm:text-2xl"
         >
           <span ref={typedRef} />
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-muted-foreground mx-auto max-w-xl text-base"
-        >
-          我使用现代技术栈打造快速、无障碍视觉体验出色的 Web 应用，兼具极致的细节把控。
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <button
             onClick={() => handleScrollTo('#projects')}

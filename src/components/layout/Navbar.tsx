@@ -55,12 +55,12 @@ export function Navbar() {
         scrolled ? 'border-border bg-background/80 border-b backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
         {/* Logo */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <Link
             href="/"
-            className="text-foreground text-lg font-bold tracking-tight"
+            className="text-foreground text-xl font-bold tracking-tight"
             onClick={(e) => {
               if (pathname === '/') {
                 e.preventDefault()
@@ -88,7 +88,7 @@ export function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-12 md:flex"
         >
           {navLinks.map((link) => (
             <li key={link.label}>

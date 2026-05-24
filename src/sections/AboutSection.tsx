@@ -27,7 +27,6 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <p className="mb-2 text-sm font-medium tracking-widest text-[--accent-portfolio] uppercase">了解我</p>
           <h2 className="text-foreground text-4xl font-bold tracking-tight">关于我</h2>
         </motion.div>
 
@@ -42,16 +41,15 @@ export function AboutSection() {
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
               你好！我是 <span className="text-foreground font-semibold">Vfan Lee</span>，一名前端工程师，热爱构建基于
-              Web 的优秀产品。我享受将复杂问题转化为简洁、直观的用户界面，兼顾极致的性能表现与令人愉悦的交互体验。
+              Web 的优秀产品。
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
               我的技术栈以 <span className="text-foreground font-semibold">React</span>、{' '}
               <span className="text-foreground font-semibold">Next.js</span> 和{' '}
-              <span className="text-foreground font-semibold">Vue.js</span> 为核心。我非常注重 TypeScript
-              带来的类型安全、无障碍访问（a11y）设计，以及编写让其他开发者（或者未来的自己）乐于阅读的整洁代码。
+              <span className="text-foreground font-semibold">Vue.js</span> 为核心。
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              在键盘之外，我通常在探索各种开源项目，进行 UI 交互实验，或者挖掘各种优秀的开发者工具。
+              在编码之外，我通常在探索各种开源项目，进行 UI 交互实验，或者挖掘各种优秀的开发者工具。
             </p>
 
             <div className="flex gap-4 pt-2">

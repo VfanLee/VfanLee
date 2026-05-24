@@ -23,9 +23,6 @@ export function SkillsSection({ limit }: SkillsSectionProps) {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <p className="mb-2 text-sm font-medium tracking-widest text-[var(--accent-portfolio)] uppercase">
-            我的技术栈
-          </p>
           <h2 className="text-foreground text-4xl font-bold tracking-tight">专业技能</h2>
         </motion.div>
 
