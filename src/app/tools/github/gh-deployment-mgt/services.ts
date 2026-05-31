@@ -14,9 +14,16 @@ interface DepartmentsRequest {
 
 /** List deployments */
 export const reqDepartments = async (params: DepartmentsRequest) => {
-  const query = qs.stringify(params)
-  const apiUrl = `/api/gh/departments?${query}`
-  const res = await fetch(apiUrl, { method: 'GET' })
+  const { owner, repo, token, ...rest } = params
+  const query = qs.stringify(rest)
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/deployments${query ? `?${query}` : ''}`
+  const res = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
   const data = await res.json()
   return data
 }
@@ -30,9 +37,19 @@ interface DeleteDepartmentRequest {
 
 /** Delete a deployment */
 export const reqDeleteDepartment = async (params: DeleteDepartmentRequest) => {
-  const query = qs.stringify(params)
-  const apiUrl = `/api/gh/departments/?${query}`
-  const response = await fetch(apiUrl, { method: 'DELETE' })
-  const data = await response.json()
-  return data
+  const { owner, repo, token, id } = params
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/deployments/${id}`
+  const response = await fetch(apiUrl, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  if (response.status === 204) return null
+  try {
+    return await response.json()
+  } catch (err) {
+    return null
+  }
 }
