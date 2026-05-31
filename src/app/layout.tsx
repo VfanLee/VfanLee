@@ -4,8 +4,7 @@ import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
@@ -41,9 +40,9 @@ export default function RootLayout({
       <body className={`${geistMono.variable} antialiased`}>
         <ThemeProvider>
           <SmoothScrollProvider>
-            <Navbar />
-            <div className="relative min-h-screen overflow-x-hidden">{children}</div>
-            <Footer />
+            <TooltipProvider>
+              <div className="relative min-h-screen overflow-x-hidden">{children}</div>
+            </TooltipProvider>
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
