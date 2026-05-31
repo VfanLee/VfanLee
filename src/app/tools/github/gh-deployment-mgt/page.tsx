@@ -6,6 +6,17 @@ import type { SearchParams, TableData } from './types'
 import { reqDepartments, reqDeleteDepartment } from './services'
 import { Button } from '@/components/ui/button'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 const defaultSearchParams: SearchParams = {
   owner: '',
@@ -63,6 +74,8 @@ const View: React.FC = () => {
         id: record.id,
       }
       await reqDeleteDepartment(params)
+      // 删除成功后重新查询刷新数据
+      handleSearch()
     } catch (error) {
       console.error(error)
     }
@@ -173,12 +186,25 @@ const View: React.FC = () => {
                   <td className="max-w-[120px] truncate py-2.5 pr-4 text-xs">{record.task}</td>
                   <td className="max-w-[120px] truncate py-2.5 pr-4 text-xs">{record.environment}</td>
                   <td className="py-2.5">
-                    <button
-                      onClick={() => handleDelete(record)}
-                      className="text-destructive hover:text-destructive/80 text-xs transition-colors"
-                    >
-                      删除
-                    </button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <button className="text-destructive hover:text-destructive/80 text-xs transition-colors">
+                          删除
+                        </button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>确认要删除该记录吗？</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            此操作不可逆。该 Deployment 记录将被永久删除。
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>取消</AlertDialogCancel>
+                          <AlertDialogAction onClick={() => handleDelete(record)}>确认删除</AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </td>
                 </tr>
               ))}
