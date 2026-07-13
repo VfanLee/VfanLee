@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui'
+import { cn } from '@/utils/ui'
 import {
   imageToBase64,
   isValidImageFile,
@@ -13,7 +13,7 @@ import {
   SUPPORTED_IMAGE_TYPES,
   MAX_FILE_SIZE,
   copyToClipboard,
-} from '@/lib/encode-utils'
+} from '@/utils'
 
 export default function ImageBase64Page() {
   const [base64Result, setBase64Result] = React.useState('')

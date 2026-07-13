@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import ToolDescription from '@/components/ui/ToolDescription'
-import { copyToClipboard, isValidResult } from '@/lib/encode-utils'
+import { Button } from '@/components/ui'
+import { ToolDescription } from '@/components'
+import { copyToClipboard, isValidResult } from '@/utils'
 
 export default function UrlEncodePage() {
   const [input, setInput] = React.useState('')

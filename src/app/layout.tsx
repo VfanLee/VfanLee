@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist_Mono, Noto_Sans_SC } from 'next/font/google'
 import './globals.css'
-import { cn } from '@/lib/utils'
-import { ThemeProvider } from '@/components/providers/ThemeProvider'
-import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
-import { TooltipProvider } from '@/components/ui/tooltip'
+import { SmoothScrollProvider, ThemeProvider } from '@/components'
+import { TooltipProvider } from '@/components/ui'
+import { cn } from '@/utils/ui'
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],

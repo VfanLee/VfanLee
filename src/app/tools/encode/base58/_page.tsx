@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import ToolDescription from '@/components/ui/ToolDescription'
+import { Button } from '@/components/ui'
+import { ToolDescription } from '@/components'
 import {
   base58CheckEncode,
   base58CheckDecode,
@@ -12,7 +12,7 @@ import {
   base58IntDecode,
   copyToClipboard,
   isValidResult,
-} from '@/lib/encode-utils'
+} from '@/utils'
 
 type ModeType = 'string' | 'int' | 'check'
 

@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { base64ToBlob, SUPPORTED_IMAGE_TYPES } from '@/lib/encode-utils'
+import { Button } from '@/components/ui'
+import { base64ToBlob, SUPPORTED_IMAGE_TYPES } from '@/utils'
 
 const EXT_MAP: Record<string, string> = {
   'image/png': 'png',

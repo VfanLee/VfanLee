@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { copyToClipboard } from '@/utils'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui'
 import { Copy } from 'lucide-react'
 
 function CopyButton({ text, disabled }: { text: string; disabled?: boolean }) {

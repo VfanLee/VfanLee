@@ -4,8 +4,6 @@ import type { ChangeEvent } from 'react'
 import React, { useState } from 'react'
 import type { SearchParams, TableData } from './types'
 import { reqDepartments, reqDeleteDepartment } from './services'
-import { Button } from '@/components/ui/button'
-import { ChevronDown, ChevronUp } from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +14,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+  Button,
+} from '@/components/ui'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 const defaultSearchParams: SearchParams = {
   owner: '',

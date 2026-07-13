@@ -1,6 +1,5 @@
-import { ToolsSidebar } from '@/components/layout/ToolsSidebar'
-import { ToolsNavbar } from '@/components/layout/ToolsNavbar'
-import { SidebarProvider } from '@/components/ui/sidebar'
+import { ToolsNavbar, ToolsSidebar } from '@/components'
+import { SidebarProvider } from '@/components/ui'
 
 export default function ToolsLayout({
   children,

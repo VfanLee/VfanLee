@@ -1,15 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import ToolDescription from '@/components/ui/ToolDescription'
-import {
-  base64StringEncode,
-  base64StringDecode,
-  isValidBase64,
-  copyToClipboard,
-  isValidResult,
-} from '@/lib/encode-utils'
+import { Button } from '@/components/ui'
+import { ToolDescription } from '@/components'
+import { base64StringEncode, base64StringDecode, isValidBase64, copyToClipboard, isValidResult } from '@/utils'
 
 export default function Base64Page() {
   const [input, setInput] = React.useState('')

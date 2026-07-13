@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { sha256 } from '@/utils/crypto'
 import { copyToClipboard, isValidResult } from '@/utils'
-import { Button } from '@/components/ui/button'
-import ToolDescription from '@/components/ui/ToolDescription'
+import { Button } from '@/components/ui'
+import { ToolDescription } from '@/components'
 
 export default function SHA256Page() {
   const [input, setInput] = useState('')

@@ -352,9 +352,4 @@ export const socialLinks = [
   { name: 'Email', url: 'mailto:fanfanfafafa@gmail.com', icon: 'mail' },
 ]
 
-export const navLinks = [
-  { label: '关于', href: '/#about' },
-  { label: '技能', href: '/#skills' },
-  { label: '项目', href: '/#projects' },
-  { label: '联系', href: '/#contact' },
-]
+export const navLinks = [{ label: '关于', href: '/#about' }]

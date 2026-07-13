@@ -52,5 +52,5 @@ interface Creator {
 }
 
 interface Payload {
-  [key: string]: any
+  [key: string]: unknown
 }
