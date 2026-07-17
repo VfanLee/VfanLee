@@ -1,46 +1,89 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Star } from 'lucide-react'
+import { Search, Star, X } from 'lucide-react'
+import { useMemo, useState, useSyncExternalStore } from 'react'
 import { ToolCard } from '@/components'
-import { getToolByHref } from '@/data/tools'
+import { Button, Input } from '@/components/ui'
+import { toolGroups, type ToolGroup, type ToolItem } from '@/data/tools'
 import { useFavoritesStore } from '@/store/useFavoritesStore'
 
+function matchesSearch(group: ToolGroup, tool: ToolItem, query: string) {
+  return [group.name, group.description, tool.title, tool.desc].some((value) =>
+    value.toLocaleLowerCase().includes(query),
+  )
+}
+
+function useFavoritesHydrated() {
+  return useSyncExternalStore(
+    (onStoreChange) => useFavoritesStore.persist.onFinishHydration(onStoreChange),
+    () => useFavoritesStore.persist.hasHydrated(),
+    () => false,
+  )
+}
+
 export default function FavoritesPage() {
-  const favorites = useFavoritesStore((s) => s.favorites)
-  const [hydrated, setHydrated] = useState(false)
-
-  useEffect(() => {
-    setHydrated(true)
-  }, [])
-
-  const favoriteTools = hydrated
-    ? favorites.map((href) => getToolByHref(href)).filter((tool): tool is NonNullable<typeof tool> => Boolean(tool))
-    : []
+  const favorites = useFavoritesStore((state) => state.favorites)
+  const hydrated = useFavoritesHydrated()
+  const [query, setQuery] = useState('')
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  const favoriteTools = useMemo(
+    () =>
+      toolGroups
+        .flatMap((group) => group.tools.map((tool) => ({ group, tool })))
+        .filter(({ group, tool }) => favorites.includes(tool.href) && matchesSearch(group, tool, normalizedQuery))
+        .map(({ tool }) => tool),
+    [favorites, normalizedQuery],
+  )
 
   return (
-    <div className="mx-auto w-full max-w-[100rem] px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
-      <div className="border-border mb-10 border-b pb-5">
-        <div className="text-muted-foreground mb-3 flex items-center gap-2 text-xs font-medium tracking-[0.14em] uppercase">
-          <Star className="size-3.5" /> Favorites
+    <div className="mx-auto w-full max-w-[120rem] px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
+      <div className="bg-background/95 sticky top-0 z-10 -mx-4 border-b px-4 pt-1 pb-5 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <label className="sr-only" htmlFor="favorite-tool-search">
+          搜索收藏工具
+        </label>
+        <div className="relative">
+          <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2" />
+          <Input
+            id="favorite-tool-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="搜索收藏的工具、分类或功能"
+            className="border-border bg-card h-11 pr-10 pl-10 shadow-sm"
+          />
+          {query && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon-sm"
+              className="absolute top-1/2 right-1 -translate-y-1/2"
+              onClick={() => setQuery('')}
+              aria-label="清空搜索"
+            >
+              <X />
+            </Button>
+          )}
         </div>
-        <h1 className="text-foreground text-3xl font-bold tracking-tight">收藏</h1>
-        <p className="text-muted-foreground mt-2 text-sm">本地缓存的常用工具快捷入口</p>
       </div>
 
-      {!hydrated ? null : favoriteTools.length === 0 ? (
-        <div className="text-muted-foreground flex flex-col items-start gap-3 text-sm">
-          <p>暂无收藏。可在工具卡片上点击星标加入。</p>
-          <Link href="/tools" className="text-foreground underline-offset-4 hover:underline">
-            返回首页浏览工具
-          </Link>
-        </div>
-      ) : (
-        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+      {!hydrated ? null : favoriteTools.length > 0 ? (
+        <div className="grid gap-3 pt-7 sm:grid-cols-2 lg:grid-cols-4">
           {favoriteTools.map((tool) => (
             <ToolCard key={tool.href} tool={tool} />
           ))}
+        </div>
+      ) : (
+        <div className="flex min-h-72 flex-col items-center justify-center text-center">
+          <Star className="text-muted-foreground/70 mb-3 size-5" />
+          <p className="text-foreground text-sm font-medium">{query ? '未找到匹配的收藏工具' : '暂无收藏工具'}</p>
+          <p className="text-muted-foreground mt-1 text-sm">
+            {query ? '换个关键词，或清空搜索后查看全部收藏。' : '可在工具卡片上点击星标加入收藏。'}
+          </p>
+          {!query && (
+            <Link href="/tools" className="text-foreground mt-4 text-sm underline-offset-4 hover:underline">
+              返回首页浏览工具
+            </Link>
+          )}
         </div>
       )}
     </div>

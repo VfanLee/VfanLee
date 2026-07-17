@@ -1,41 +1,84 @@
 'use client'
 
-import { Wrench } from 'lucide-react'
+import { Search, X } from 'lucide-react'
+import { useMemo, useState } from 'react'
 import { ToolCard } from '@/components'
-import { toolGroups } from '@/data/tools'
+import { Button, Input } from '@/components/ui'
+import { toolGroups, type ToolGroup, type ToolItem } from '@/data/tools'
+
+function matchesSearch(group: ToolGroup, tool: ToolItem, query: string) {
+  return [group.name, group.description, tool.title, tool.desc].some((value) =>
+    value.toLocaleLowerCase().includes(query),
+  )
+}
 
 export default function ToolsPage() {
-  const toolCount = toolGroups.reduce((count, group) => count + group.tools.length, 0)
+  const [query, setQuery] = useState('')
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  const filteredGroups = useMemo(
+    () =>
+      toolGroups
+        .map((group) => ({
+          ...group,
+          tools: group.tools.filter((tool) => matchesSearch(group, tool, normalizedQuery)),
+        }))
+        .filter((group) => group.tools.length > 0),
+    [normalizedQuery],
+  )
 
   return (
-    <div className="mx-auto w-full max-w-[100rem] px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
-      <div className="border-border mb-10 flex items-end justify-between border-b pb-5">
-        <div>
-          <div className="text-muted-foreground mb-3 flex items-center gap-2 text-xs font-medium tracking-[0.14em] uppercase">
-            <Wrench className="size-3.5" /> Toolbox
-          </div>
-          <h1 className="text-foreground text-3xl font-bold tracking-tight">开发工具箱</h1>
-          <p className="text-muted-foreground mt-2 text-sm">常用编码、转换与开发辅助工具</p>
+    <div className="mx-auto w-full max-w-[120rem] px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
+      <div className="bg-background/95 sticky top-0 z-10 -mx-4 border-b px-4 pt-1 pb-5 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <label className="sr-only" htmlFor="tool-search">
+          搜索工具
+        </label>
+        <div className="relative">
+          <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2" />
+          <Input
+            id="tool-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="搜索工具、分类或功能"
+            className="border-border bg-card h-11 pr-10 pl-10 shadow-sm"
+          />
+          {query && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon-sm"
+              className="absolute top-1/2 right-1 -translate-y-1/2"
+              onClick={() => setQuery('')}
+              aria-label="清空搜索"
+            >
+              <X />
+            </Button>
+          )}
         </div>
-        <p className="text-muted-foreground hidden font-mono text-xs lg:block">{toolCount} tools available</p>
       </div>
 
-      <div className="grid gap-x-10 gap-y-9 xl:grid-cols-2">
-        {toolGroups.map((group) => (
-          <section key={group.name}>
-            <div className="mb-3 flex items-baseline justify-between gap-3">
-              <h2 className="text-foreground text-sm font-semibold">{group.name}</h2>
-              <span className="text-muted-foreground text-xs">{group.description}</span>
-            </div>
-
-            <div className="grid gap-2 sm:grid-cols-2">
-              {group.tools.map((tool) => (
-                <ToolCard key={tool.href} tool={tool} />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+      {filteredGroups.length > 0 ? (
+        <div className="space-y-9 pt-7">
+          {filteredGroups.map((group) => (
+            <section key={group.name}>
+              <div className="mb-4">
+                <h2 className="text-foreground text-lg font-semibold tracking-tight">{group.name}</h2>
+                <p className="text-muted-foreground mt-1 text-sm">{group.description}</p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {group.tools.map((tool) => (
+                  <ToolCard key={tool.href} tool={tool} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <div className="flex min-h-72 flex-col items-center justify-center text-center">
+          <Search className="text-muted-foreground/70 mb-3 size-5" />
+          <p className="text-foreground text-sm font-medium">未找到匹配的工具</p>
+          <p className="text-muted-foreground mt-1 text-sm">换个关键词，或清空搜索后查看全部工具。</p>
+        </div>
+      )}
     </div>
   )
 }
