@@ -73,7 +73,7 @@ export default function RandomValuePage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-10">
+    <div className="w-full px-6 py-10">
       <div className="mb-8">
         <h1 className="text-foreground mb-1 text-xl font-semibold">随机数</h1>
         <p className="text-muted-foreground text-sm">生成随机 UUID、时间戳、数字和颜色</p>

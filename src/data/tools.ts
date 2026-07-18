@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Binary, FileImage, Hash, Image, Link2, Rocket, Shuffle } from 'lucide-react'
+import { Binary, Box, Hash, Image, Layers3, Link2, Rocket, Shuffle } from 'lucide-react'
 
 export type ToolItem = {
   href: string
@@ -33,15 +33,9 @@ export const toolGroups: ToolGroup[] = [
       },
       {
         href: '/tools/encode/image-base64',
-        title: '图片转 Base64',
-        desc: '将图片文件转换为 Base64 字符串',
+        title: '图片 ↔ Base64',
+        desc: '图片文件与 Base64 字符串双向转换',
         icon: Image,
-      },
-      {
-        href: '/tools/encode/base64-to-image',
-        title: 'Base64 转图片',
-        desc: '将 Base64 字符串还原为图片',
-        icon: FileImage,
       },
       {
         href: '/tools/encode/base58',
@@ -60,6 +54,24 @@ export const toolGroups: ToolGroup[] = [
         title: 'SHA256',
         desc: 'SHA256 哈希计算工具，用于生成数据指纹和完整性验证。',
         icon: Hash,
+      },
+    ],
+  },
+  {
+    name: 'CSS',
+    description: '常用 CSS 样式的可视化调节工具',
+    tools: [
+      {
+        href: '/tools/css/border',
+        title: 'Border',
+        desc: '可视化调节四边边框与四角圆角',
+        icon: Box,
+      },
+      {
+        href: '/tools/css/box-shadow',
+        title: 'Box Shadow',
+        desc: '可视化编辑多层 box-shadow 阴影',
+        icon: Layers3,
       },
     ],
   },

@@ -2,7 +2,8 @@
  * 编码/解码相关工具函数
  */
 
-import basex from 'base-x'
+import bs58 from 'bs58'
+import { Base64 } from 'js-base64'
 import { sha256 } from './crypto'
 
 // ─── Base64 ────────────────────────────────────────────────────────────────
@@ -11,35 +12,21 @@ import { sha256 } from './crypto'
  * Base64 字符串编码（标准，支持 UTF-8 / 中文）
  */
 export function base64StringEncode(input: string): string {
-  const bytes = new TextEncoder().encode(input)
-  const binaryString = String.fromCharCode(...bytes)
-  return btoa(binaryString)
+  return Base64.encode(input)
 }
 
 /**
  * Base64 字符串解码（标准，支持 UTF-8 / 中文）
  */
 export function base64StringDecode(input: string): string {
-  const binaryString = atob(input)
-  const bytes = new Uint8Array(binaryString.length)
-  for (let i = 0; i < binaryString.length; i++) {
-    bytes[i] = binaryString.charCodeAt(i)
-  }
-  return new TextDecoder().decode(bytes)
+  return Base64.decode(input)
 }
 
 /**
  * 验证 Base64 格式是否合法
  */
 export function isValidBase64(input: string): boolean {
-  try {
-    const base64Regex = /^[A-Za-z0-9+/]*={0,2}$/
-    if (!base64Regex.test(input)) return false
-    atob(input)
-    return true
-  } catch {
-    return false
-  }
+  return Base64.isValid(input)
 }
 
 // ─── Image Base64 ──────────────────────────────────────────────────────────
@@ -87,25 +74,16 @@ export function formatFileSize(bytes: number): string {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
 }
 
-export function imageToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (!isValidImageFile(file)) {
-      reject(new Error(`不支持的文件格式。支持的格式：${getSupportedFormatsText()}`))
-      return
-    }
-    if (!isValidFileSize(file)) {
-      reject(new Error(`文件过大。最大支持 ${formatFileSize(MAX_FILE_SIZE)}`))
-      return
-    }
-    const reader = new FileReader()
-    reader.onload = (event) => {
-      const result = event.target?.result
-      if (typeof result === 'string') resolve(result)
-      else reject(new Error('文件读取失败'))
-    }
-    reader.onerror = () => reject(new Error('文件读取出错'))
-    reader.readAsDataURL(file)
-  })
+export async function imageToBase64(file: File): Promise<string> {
+  if (!isValidImageFile(file)) {
+    throw new Error(`不支持的文件格式。支持的格式：${getSupportedFormatsText()}`)
+  }
+  if (!isValidFileSize(file)) {
+    throw new Error(`文件过大。最大支持 ${formatFileSize(MAX_FILE_SIZE)}`)
+  }
+
+  const bytes = new Uint8Array(await file.arrayBuffer())
+  return `data:${file.type};base64,${Base64.fromUint8Array(bytes)}`
 }
 
 export function extractBase64FromDataUrl(dataUrl: string): string {
@@ -123,11 +101,9 @@ export function base64ToBlob(base64OrDataUrl: string, mimeType?: string): Blob {
     rawBase64 = match[2]
   }
   try {
-    const binaryString = atob(rawBase64)
-    const len = binaryString.length
-    const bytes = new Uint8Array(len)
-    for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i)
-    return new Blob([bytes], { type: finalMime })
+    if (!Base64.isValid(rawBase64)) throw new Error('invalid base64')
+    const decodedBytes = new Uint8Array(Base64.toUint8Array(rawBase64))
+    return new Blob([decodedBytes], { type: finalMime })
   } catch {
     throw new Error('无效的 Base64 字符串')
   }
@@ -154,9 +130,6 @@ export function bytesToInt(bytes: Uint8Array): bigint {
 }
 
 // ─── Base58 ────────────────────────────────────────────────────────────────
-
-const BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-const bs58 = basex(BASE58)
 
 export async function base58CheckEncode(data: Uint8Array): Promise<string> {
   const hash1 = await sha256(data)

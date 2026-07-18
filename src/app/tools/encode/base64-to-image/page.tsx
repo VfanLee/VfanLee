@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
-export const metadata: Metadata = {
-  title: 'Base64 转图片 | Tools | Vfan Lee',
-  description: '将 Base64 字符串还原为图片，支持预览和下载。',
+export const metadata: Metadata = { title: '图片 ↔ Base64 | Vfan Lee' }
+
+export default function Base64ToImagePage() {
+  redirect('/tools/encode/image-base64')
 }
-
-export { default } from './_page'

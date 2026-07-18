@@ -27,19 +27,19 @@ export default function ToolsPage() {
   )
 
   return (
-    <div className="mx-auto w-full max-w-[120rem] px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
-      <div className="bg-background/95 sticky top-0 z-10 -mx-4 border-b px-4 pt-1 pb-5 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div className="w-full px-4 sm:px-6 lg:px-8">
+      <div className="bg-background/95 sticky top-0 z-10 -mx-4 flex h-24 items-center border-b px-4 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <label className="sr-only" htmlFor="tool-search">
           搜索工具
         </label>
-        <div className="relative">
+        <div className="relative w-full">
           <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2" />
           <Input
             id="tool-search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="搜索工具、分类或功能"
-            className="border-border bg-card h-11 pr-10 pl-10 shadow-sm"
+            className="border-border bg-card h-11 rounded-lg pr-10 pl-10 shadow-none"
           />
           {query && (
             <Button
@@ -62,9 +62,8 @@ export default function ToolsPage() {
             <section key={group.name}>
               <div className="mb-4">
                 <h2 className="text-foreground text-lg font-semibold tracking-tight">{group.name}</h2>
-                <p className="text-muted-foreground mt-1 text-sm">{group.description}</p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3">
                 {group.tools.map((tool) => (
                   <ToolCard key={tool.href} tool={tool} />
                 ))}

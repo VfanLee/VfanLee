@@ -44,7 +44,11 @@ export function ToolsNavigation({ onNavigate }: ToolsNavigationProps) {
   const pathname = usePathname()
 
   return (
-    <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto px-3 py-4" aria-label="工具导航">
+    <nav
+      data-lenis-prevent
+      className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-3 py-4"
+      aria-label="工具导航"
+    >
       <div className="space-y-1">
         <NavigationLink
           href="/tools"

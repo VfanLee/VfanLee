@@ -149,7 +149,7 @@ export default function Base58Page() {
         : '请输入要编码/解码的字符串内容（带校验码）'
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-10">
+    <div className="w-full px-6 py-10">
       <div className="mb-6">
         <h1 className="text-foreground mb-1 text-xl font-semibold">Base58 编码</h1>
         <p className="text-muted-foreground text-sm">Base58 编码 / 解码工具，支持字符串、整数、带校验码三种模式</p>

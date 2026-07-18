@@ -88,7 +88,7 @@ const View: React.FC = () => {
   const canSearch = searchParams.owner !== '' && searchParams.repo !== '' && searchParams.token !== ''
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-10">
+    <div className="w-full px-6 py-10">
       <div className="mb-6">
         <h1 className="text-foreground mb-1 text-xl font-semibold">Deployments</h1>
         <p className="text-muted-foreground text-sm">GitHub Deployment 管理工具</p>
@@ -176,15 +176,11 @@ const View: React.FC = () => {
               tableData.map((record, index) => (
                 <tr key={record.id} className="border-border/30 border-b last:border-0">
                   <td className="py-2.5 pr-4 text-xs">{index + 1}</td>
-                  <td className="text-muted-foreground max-w-[120px] truncate py-2.5 pr-4 font-mono text-xs">
-                    {record.id}
-                  </td>
-                  <td className="text-muted-foreground max-w-[120px] truncate py-2.5 pr-4 font-mono text-xs">
-                    {record.sha}
-                  </td>
-                  <td className="max-w-[120px] truncate py-2.5 pr-4 text-xs">{record.ref}</td>
-                  <td className="max-w-[120px] truncate py-2.5 pr-4 text-xs">{record.task}</td>
-                  <td className="max-w-[120px] truncate py-2.5 pr-4 text-xs">{record.environment}</td>
+                  <td className="text-muted-foreground truncate py-2.5 pr-4 font-mono text-xs">{record.id}</td>
+                  <td className="text-muted-foreground truncate py-2.5 pr-4 font-mono text-xs">{record.sha}</td>
+                  <td className="truncate py-2.5 pr-4 text-xs">{record.ref}</td>
+                  <td className="truncate py-2.5 pr-4 text-xs">{record.task}</td>
+                  <td className="truncate py-2.5 pr-4 text-xs">{record.environment}</td>
                   <td className="py-2.5">
                     <AlertDialog>
                       <AlertDialogTrigger asChild>

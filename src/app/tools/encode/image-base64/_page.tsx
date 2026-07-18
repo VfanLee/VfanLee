@@ -1,36 +1,53 @@
 'use client'
 
 import React from 'react'
+import { Code2, Download, ImageIcon, Upload } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { cn } from '@/utils/ui'
 import {
-  imageToBase64,
-  isValidImageFile,
-  isValidFileSize,
-  formatFileSize,
-  extractBase64FromDataUrl,
-  getSupportedFormatsText,
-  SUPPORTED_IMAGE_TYPES,
-  MAX_FILE_SIZE,
+  base64ToBlob,
   copyToClipboard,
+  extractBase64FromDataUrl,
+  formatFileSize,
+  getSupportedFormatsText,
+  imageToBase64,
+  isValidFileSize,
+  isValidImageFile,
+  MAX_FILE_SIZE,
+  SUPPORTED_IMAGE_TYPES,
 } from '@/utils'
 
+const EXT_MAP: Record<string, string> = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg',
+  'image/gif': 'gif',
+  'image/webp': 'webp',
+  'image/bmp': 'bmp',
+  'image/svg+xml': 'svg',
+}
+
+type Mode = 'to-base64' | 'to-image'
+
 export default function ImageBase64Page() {
+  const [mode, setMode] = React.useState<Mode>('to-base64')
   const [base64Result, setBase64Result] = React.useState('')
   const [pureBase64Result, setPureBase64Result] = React.useState('')
+  const [inputBase64, setInputBase64] = React.useState('')
+  const [selectedMime, setSelectedMime] = React.useState('image/png')
+  const [previewUrl, setPreviewUrl] = React.useState('')
+  const [notice, setNotice] = React.useState<{ type: 'error' | 'warn'; message: string } | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
   const [dragActive, setDragActive] = React.useState(false)
-  const [notice, setNotice] = React.useState<{ type: 'error' | 'warn'; msg: string } | null>(null)
   const [copied, setCopied] = React.useState<string | null>(null)
   const fileInputRef = React.useRef<HTMLInputElement>(null)
 
-  const showNotice = (type: 'error' | 'warn', msg: string) => {
-    setNotice({ type, msg })
-    setTimeout(() => setNotice(null), 3000)
+  const showNotice = (type: 'error' | 'warn', message: string) => {
+    setNotice({ type, message })
+    window.setTimeout(() => setNotice(null), 3000)
   }
 
   const handleFileSelect = async (file: File) => {
-    if (!file) return
     setNotice(null)
     if (!isValidImageFile(file)) {
       showNotice('warn', `不支持的文件格式。支持：${getSupportedFormatsText()}`)
@@ -40,13 +57,14 @@ export default function ImageBase64Page() {
       showNotice('warn', `文件过大，最大支持 ${formatFileSize(MAX_FILE_SIZE)}`)
       return
     }
+
     setIsLoading(true)
     try {
       const result = await imageToBase64(file)
       setBase64Result(result)
       setPureBase64Result(extractBase64FromDataUrl(result))
     } catch (error) {
-      showNotice('error', `转换失败: ${error instanceof Error ? error.message : '未知错误'}`)
+      showNotice('error', `转换失败：${error instanceof Error ? error.message : '未知错误'}`)
       setBase64Result('')
       setPureBase64Result('')
     } finally {
@@ -54,150 +72,264 @@ export default function ImageBase64Page() {
     }
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) handleFileSelect(file)
+  const handleBase64Convert = () => {
+    const input = inputBase64.trim()
+    if (!input) {
+      showNotice('warn', '请输入 Base64 字符串')
+      return
+    }
+
+    try {
+      const blob = base64ToBlob(input, selectedMime)
+      if (previewUrl) URL.revokeObjectURL(previewUrl)
+      setPreviewUrl(URL.createObjectURL(blob))
+      setNotice(null)
+    } catch (error) {
+      showNotice('error', `转换失败：${error instanceof Error ? error.message : '未知错误'}`)
+      if (previewUrl) URL.revokeObjectURL(previewUrl)
+      setPreviewUrl('')
+    }
   }
 
-  const handleDrag = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (e.type === 'dragenter' || e.type === 'dragover') setDragActive(true)
-    else if (e.type === 'dragleave') setDragActive(false)
+  const handleCopy = async (text: string, key: string) => {
+    if (await copyToClipboard(text)) {
+      setCopied(key)
+      window.setTimeout(() => setCopied(null), 1500)
+    }
   }
 
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setDragActive(false)
-    const file = e.dataTransfer.files?.[0]
-    if (file) handleFileSelect(file)
-  }
-
-  const handleClear = () => {
+  const handleImageClear = () => {
     setBase64Result('')
     setPureBase64Result('')
     setNotice(null)
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
-  const handleCopy = async (text: string, key: string) => {
-    const ok = await copyToClipboard(text)
-    if (ok) {
-      setCopied(key)
-      setTimeout(() => setCopied(null), 1500)
-    }
+  const handleBase64Clear = () => {
+    setInputBase64('')
+    setSelectedMime('image/png')
+    setNotice(null)
+    if (previewUrl) URL.revokeObjectURL(previewUrl)
+    setPreviewUrl('')
   }
 
+  React.useEffect(
+    () => () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl)
+    },
+    [previewUrl],
+  )
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-10">
-      <div className="mb-6">
-        <h1 className="text-foreground mb-1 text-xl font-semibold">图片 → Base64</h1>
-        <p className="text-muted-foreground text-sm">将图片文件转换为 Base64 编码字符串，便于在网页中嵌入使用</p>
+    <div className="w-full px-4 py-6 sm:px-6 sm:py-8">
+      <div className="mb-7">
+        <h1 className="text-foreground text-xl font-semibold tracking-tight">图片 ↔ Base64</h1>
+        <p className="text-muted-foreground mt-1 text-sm">在图片文件与 Base64 字符串之间双向转换</p>
       </div>
 
-      {/* Notice */}
+      <div className="border-border bg-card inline-flex rounded-xl border p-1" role="tablist" aria-label="转换方式">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'to-base64'}
+          className={cn(
+            'inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm transition-colors',
+            mode === 'to-base64'
+              ? 'bg-muted text-foreground font-medium'
+              : 'text-muted-foreground hover:text-foreground',
+          )}
+          onClick={() => setMode('to-base64')}
+        >
+          <Upload className="size-4" /> 图片转 Base64
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'to-image'}
+          className={cn(
+            'inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm transition-colors',
+            mode === 'to-image'
+              ? 'bg-muted text-foreground font-medium'
+              : 'text-muted-foreground hover:text-foreground',
+          )}
+          onClick={() => setMode('to-image')}
+        >
+          <ImageIcon className="size-4" /> Base64 转图片
+        </button>
+      </div>
+
       {notice && (
         <div
           className={cn(
-            'mb-4 rounded-lg border px-4 py-3 text-sm',
+            'mt-5 rounded-lg border px-4 py-3 text-sm',
             notice.type === 'error'
               ? 'border-destructive/50 bg-destructive/10 text-destructive'
-              : 'border-yellow-400/50 bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400',
+              : 'border-yellow-400/50 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400',
           )}
         >
-          {notice.msg}
+          {notice.message}
         </div>
       )}
 
-      {/* Drop Zone */}
-      <div
-        className={cn(
-          'rounded-xl border-2 border-dashed p-10 text-center transition-colors',
-          dragActive ? 'border-border bg-foreground/5' : 'border-border/50 hover:border-border/70',
-        )}
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-      >
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept={SUPPORTED_IMAGE_TYPES.join(',')}
-          onChange={handleFileChange}
-          className="hidden"
-        />
-        <div className="space-y-3">
-          <div className="text-4xl">📁</div>
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-muted-foreground">拖拽图片到这里，或</span>
-            <Button variant="secondary" size="sm" onClick={() => fileInputRef.current?.click()} disabled={isLoading}>
-              选择文件
+      {mode === 'to-base64' ? (
+        <div className="mt-5 space-y-4">
+          <div
+            className={cn(
+              'border-border/60 hover:border-border rounded-xl border border-dashed p-8 text-center transition-colors sm:p-12',
+              dragActive && 'border-foreground/40 bg-muted/40',
+            )}
+            onDragEnter={(event) => {
+              event.preventDefault()
+              setDragActive(true)
+            }}
+            onDragOver={(event) => event.preventDefault()}
+            onDragLeave={() => setDragActive(false)}
+            onDrop={(event) => {
+              event.preventDefault()
+              setDragActive(false)
+              const file = event.dataTransfer.files?.[0]
+              if (file) void handleFileSelect(file)
+            }}
+          >
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept={SUPPORTED_IMAGE_TYPES.join(',')}
+              onChange={(event) => {
+                const file = event.target.files?.[0]
+                if (file) void handleFileSelect(file)
+              }}
+              className="hidden"
+            />
+            <Upload className="text-muted-foreground mx-auto mb-3 size-6" />
+            <p className="text-foreground text-sm font-medium">拖拽图片到这里，或选择文件</p>
+            <p className="text-muted-foreground mt-1 text-xs">
+              {getSupportedFormatsText()} · 最大 {formatFileSize(MAX_FILE_SIZE)}
+            </p>
+            <Button
+              className="mt-4"
+              variant="secondary"
+              size="sm"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isLoading}
+            >
+              选择图片
             </Button>
           </div>
-          <p className="text-muted-foreground text-xs">
-            支持格式：{getSupportedFormatsText()}　·　最大 {formatFileSize(MAX_FILE_SIZE)}
-          </p>
+
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="secondary"
+              size="sm"
+              disabled={!base64Result}
+              onClick={() => void handleCopy(base64Result, 'full')}
+            >
+              {copied === 'full' ? '已复制' : '复制完整 Data URL'}
+            </Button>
+            <Button
+              variant="secondary"
+              size="sm"
+              disabled={!pureBase64Result}
+              onClick={() => void handleCopy(pureBase64Result, 'pure')}
+            >
+              {copied === 'pure' ? '已复制' : '复制纯 Base64'}
+            </Button>
+            <Button variant="ghost" size="sm" disabled={!base64Result || isLoading} onClick={handleImageClear}>
+              清空
+            </Button>
+          </div>
+
+          {isLoading ? (
+            <p className="text-muted-foreground text-sm">正在转换图片…</p>
+          ) : (
+            <div className="grid gap-4 lg:grid-cols-2">
+              <label className="text-sm font-medium">
+                完整 Data URL
+                <textarea
+                  readOnly
+                  rows={8}
+                  value={base64Result}
+                  placeholder="转换结果将在这里显示"
+                  className="border-border/60 bg-muted/30 placeholder:text-muted-foreground/50 mt-2 block w-full resize-none rounded-lg border px-3 py-2.5 font-mono text-xs font-normal outline-none"
+                />
+              </label>
+              <label className="text-sm font-medium">
+                纯 Base64 字符串
+                <textarea
+                  readOnly
+                  rows={8}
+                  value={pureBase64Result}
+                  placeholder="转换结果将在这里显示"
+                  className="border-border/60 bg-muted/30 placeholder:text-muted-foreground/50 mt-2 block w-full resize-none rounded-lg border px-3 py-2.5 font-mono text-xs font-normal outline-none"
+                />
+              </label>
+            </div>
+          )}
         </div>
-      </div>
+      ) : (
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <div>
+            <label htmlFor="base64-input" className="text-sm font-medium">
+              Base64 字符串
+            </label>
+            <textarea
+              id="base64-input"
+              value={inputBase64}
+              onChange={(event) => setInputBase64(event.target.value)}
+              placeholder="粘贴纯 Base64 字符串或完整 Data URL"
+              className="border-border/60 bg-muted/30 placeholder:text-muted-foreground/50 mt-2 h-64 w-full resize-none rounded-lg border px-3 py-2.5 font-mono text-xs outline-none"
+            />
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <label htmlFor="image-mime" className="text-muted-foreground text-sm">
+                图片类型
+              </label>
+              <select
+                id="image-mime"
+                value={selectedMime}
+                onChange={(event) => setSelectedMime(event.target.value)}
+                className="border-border/60 bg-background rounded-lg border px-2.5 py-1.5 text-sm outline-none"
+              >
+                {SUPPORTED_IMAGE_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mt-4 flex gap-2">
+              <Button size="sm" onClick={handleBase64Convert}>
+                生成预览
+              </Button>
+              <Button variant="ghost" size="sm" onClick={handleBase64Clear}>
+                清空
+              </Button>
+            </div>
+          </div>
 
-      {/* Actions */}
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Button variant="secondary" size="sm" disabled={!base64Result} onClick={() => handleCopy(base64Result, 'full')}>
-          {copied === 'full' ? '已复制 ✓' : '复制完整 Data URL'}
-        </Button>
-        <Button
-          variant="secondary"
-          size="sm"
-          disabled={!pureBase64Result}
-          onClick={() => handleCopy(pureBase64Result, 'pure')}
-        >
-          {copied === 'pure' ? '已复制 ✓' : '复制纯 Base64'}
-        </Button>
-        <Button variant="ghost" size="sm" onClick={handleClear} disabled={isLoading}>
-          清空
-        </Button>
-      </div>
-
-      {/* Loading */}
-      {isLoading && (
-        <div className="mt-6 text-center">
-          <div className="border-primary mx-auto size-6 animate-spin rounded-full border-2 border-t-transparent" />
-          <p className="text-muted-foreground mt-2 text-sm">正在转换图片...</p>
+          <div>
+            <p className="text-sm font-medium">预览</p>
+            <div className="border-border/60 bg-muted/20 mt-2 flex h-64 items-center justify-center overflow-hidden rounded-xl border">
+              {previewUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={previewUrl} alt="转换后的图片预览" className="size-full object-contain" />
+              ) : (
+                <Code2 className="text-muted-foreground/60 size-6" />
+              )}
+            </div>
+            {previewUrl && (
+              <a
+                href={previewUrl}
+                download={`converted.${EXT_MAP[selectedMime] || 'png'}`}
+                className="mt-3 inline-flex"
+              >
+                <Button variant="secondary" size="sm">
+                  <Download /> 下载图片
+                </Button>
+              </a>
+            )}
+          </div>
         </div>
       )}
-
-      {/* Results */}
-      <div className="mt-6 space-y-4">
-        <div>
-          <label htmlFor="data-url-output" className="mb-1.5 block text-sm font-medium">
-            完整 Data URL（可直接用于 HTML img src）
-          </label>
-          <textarea
-            id="data-url-output"
-            rows={5}
-            readOnly
-            className="border-border/60 bg-muted/30 placeholder:text-muted-foreground/40 w-full resize-none rounded-lg border px-3 py-2.5 font-mono text-xs outline-none"
-            value={base64Result}
-            placeholder="Data URL 结果将在这里显示..."
-          />
-        </div>
-
-        <div>
-          <label htmlFor="pure-base64-output" className="mb-1.5 block text-sm font-medium">
-            纯 Base64 字符串
-          </label>
-          <textarea
-            id="pure-base64-output"
-            rows={7}
-            readOnly
-            className="border-border/60 bg-muted/30 placeholder:text-muted-foreground/40 w-full resize-none rounded-lg border px-3 py-2.5 font-mono text-xs outline-none"
-            value={pureBase64Result}
-            placeholder="纯 Base64 结果将在这里显示..."
-          />
-        </div>
-      </div>
     </div>
   )
 }

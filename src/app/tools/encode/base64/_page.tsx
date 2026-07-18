@@ -52,7 +52,7 @@ export default function Base64Page() {
     output.includes('失败') || output.includes('错误') || output.includes('无效') || output.includes('请输入')
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-10">
+    <div className="w-full px-6 py-10">
       <div className="mb-6">
         <h1 className="text-foreground mb-1 text-xl font-semibold">Base64 编码</h1>
         <p className="text-muted-foreground text-sm">Base64 字符串编码 / 解码工具</p>

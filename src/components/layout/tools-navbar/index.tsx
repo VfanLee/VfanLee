@@ -10,15 +10,15 @@ type ToolsNavbarProps = {
 
 export function ToolsNavbar({ onMenuClick }: ToolsNavbarProps) {
   return (
-    <header className="border-border/60 bg-background flex h-14 shrink-0 items-center justify-between border-b px-4 sm:px-5">
-      <Link href="/tools" className="text-foreground text-sm font-semibold tracking-tight">
+    <header className="border-sidebar-border bg-sidebar flex h-16 shrink-0 items-center justify-between border-b px-5 sm:h-[4.5rem] sm:px-6">
+      <Link href="/tools" className="text-foreground text-base font-semibold tracking-tight">
         开发工具箱
       </Link>
       <Button
         type="button"
         variant="ghost"
         size="icon"
-        className="md:hidden"
+        className="size-10 md:hidden"
         onClick={onMenuClick}
         aria-label="打开工具导航"
       >
