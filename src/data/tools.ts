@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Binary, Box, Hash, Image, Layers3, Link2, Rocket, Shuffle } from 'lucide-react'
+import { Binary, Box, Hash, Image, Layers3, Link2, Rocket, Sparkles, Shuffle } from 'lucide-react'
 
 export type ToolItem = {
   href: string
@@ -15,6 +15,30 @@ export type ToolGroup = {
 }
 
 export const toolGroups: ToolGroup[] = [
+  {
+    name: 'CSS',
+    description: '常用 CSS 样式的可视化调节工具',
+    tools: [
+      {
+        href: '/tools/css/border',
+        title: 'Border',
+        desc: '可视化调节四边边框与四角圆角',
+        icon: Box,
+      },
+      {
+        href: '/tools/css/box-shadow',
+        title: 'Box Shadow',
+        desc: '可视化编辑多层 box-shadow 阴影',
+        icon: Layers3,
+      },
+      {
+        href: '/tools/css/animations',
+        title: '动画示例',
+        desc: '收录常见且可直接复用的 CSS 动画效果',
+        icon: Sparkles,
+      },
+    ],
+  },
   {
     name: '编码 / 解码',
     description: '常见编码格式的互转工具',
@@ -54,24 +78,6 @@ export const toolGroups: ToolGroup[] = [
         title: 'SHA256',
         desc: 'SHA256 哈希计算工具，用于生成数据指纹和完整性验证。',
         icon: Hash,
-      },
-    ],
-  },
-  {
-    name: 'CSS',
-    description: '常用 CSS 样式的可视化调节工具',
-    tools: [
-      {
-        href: '/tools/css/border',
-        title: 'Border',
-        desc: '可视化调节四边边框与四角圆角',
-        icon: Box,
-      },
-      {
-        href: '/tools/css/box-shadow',
-        title: 'Box Shadow',
-        desc: '可视化编辑多层 box-shadow 阴影',
-        icon: Layers3,
       },
     ],
   },
